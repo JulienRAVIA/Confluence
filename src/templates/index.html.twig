@@ -1,0 +1,51 @@
+{% extends 'includes/template.html.twig' %}
+{% import 'includes/macros.html.twig' as macros %}
+
+{% block styles %}
+    {{ parent() }}
+    <link rel="stylesheet" href="css/lity.min.css" />
+{% endblock %}
+
+{% block title %}Découvrez le quartier de Confluence{% endblock %}
+
+{% block body %}
+{# Block principal du site #}
+<div class="jumbotron" id="jumbotron-main">
+    <div class="container">
+        <h1>Bienvenue à Confluence</h1>
+        <p>Un quartier vivant...</p>
+    </div>
+</div>
+
+{# Bloc de texte #}
+<div class="jumbotron">
+    <div class="container">
+        <div class="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+    {% for i in 0..2 %}
+        <div class="col-md-4">
+            <div class="card">
+                <img src="img/photos/musee.jpg" class="lightbox img-fluid">
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="js/lity.min.js"></script>
+    <script>
+        $('img.lightbox').on('click', lity);
+    </script>
+{% endblock %}
