@@ -49,3 +49,18 @@ footer {
     color: white;
     margin-top: 5px;
 }
+
+#jumbotron-menu {
+    text-align: center;;
+    border-radius: 0;
+    background-color: #62ade4;
+    color: white !important;
+}
+
+#jumbotron-menu h4 {
+    color: white;
+}
+
+#mapid {
+    height: 500px;
+}

@@ -9,7 +9,11 @@ $router = new AltoRouter();
 // Page d'accueil et déconnexion
 $router->addRoutes(array(
     array('GET', '/', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/se-reperer', 'App\\Controllers\\FindController@index', 'se-reperer'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/decouvrir', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET','/api/lieux/[i:id]', 'App\\Controllers\\ApiController@lieuxByType', 'lieuxByType'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/api/lieux', 'App\\Controllers\\ApiController@lieuxByTypes', 'lieuxByTypes'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('POST','/api/types', 'App\\Controllers\\ApiController@types', 'types'), // affichage de la page d'accueil ou de la page de connexion si non connecté
 ));
 
 $match = $router->match();

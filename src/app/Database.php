@@ -98,8 +98,7 @@ class Database {
      */
     public function getLieuxByTypes(array $types)
     {
-        $query = Database::$dbh->prepare('SELECT nom, gps, icone FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id IN(:types)');
-        $query->execute(['types' => implode(', ', $types)]);
+        $query = Database::$dbh->query("SELECT nom, gps, icone, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id IN (".implode(',', $types).")");
         return $query->fetchAll();
     }
 }
