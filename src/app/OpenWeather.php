@@ -4,7 +4,11 @@ namespace App;
 
 class OpenWeather
 {
+    /**
+     * Clé API OpenWeather
+     */
     const API_KEY = 'cb0611ac707099f9e5824b0954cdd093';
+    private $var;
 
     public function __construct($city, $country, $units = 'metric') 
     {
@@ -66,6 +70,7 @@ class OpenWeather
             'image' => $this->json_response['weather'][0]['icon'],
             'description' => ucfirst($this->json_response['weather'][0]['description'])
         );
+
         return $weather;
     }
 }

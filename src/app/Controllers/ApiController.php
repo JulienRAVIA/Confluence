@@ -20,8 +20,10 @@ class ApiController extends BaseController
     }
     
     /**
-     * On affiche la page d'accueil si connecté, 
-     * sinon on affiche la page de connexion
+     * On recupère les lieux à partir d'un type de lieu
+     * qu'on renvoie au format JSON
+     * 
+     * @return array $request
      */
     public function lieuxByType($request) {
         $type = $request['id'];
@@ -30,6 +32,11 @@ class ApiController extends BaseController
         echo json_encode($lieux);
     }
 
+    /**
+     * On récupère toutes les informations d'un
+     *
+     * @return void
+     */
     public function types()
     {
         $types = $this->db->getTypes();
