@@ -6,11 +6,9 @@
     <div class="jumbotron" id="jumbotron-menu">
         <div class="container">
             <h4>Découvrir</h4>
+            <img src="img\photos\unbopon.png" alt="c leu + bopon 2 lihhhhhhhhhhhhhhhhhhhhhhhon" width="100%">
         </div>
     </div>
-    {% if  %}
-
-    {% endif %}
     <div class="container">
         <div class="row justify-content-end">
             <select class="custom-select col-3" id="types">
@@ -20,14 +18,20 @@
             {% endfor %}
             </select>
         </div>
-        <div class="row">
-            <div class="media">
-                <img class="mr-3" src="" alt="Generic placeholder image">
-                <div class="media-body">
-                  <h5 class="mt-0">Media heading</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            
+      {% for lieu in lieux %}
+            <div class="row">
+                <div class="media">
+                    <img class="mr-3" src="img\photos\photo_{{lieu.id}}.jpg" alt="Generic placeholder image" width=10%>
+                    <div class="media-body">
+                        <h5 class="mt-0">{{lieu.nom}}  {{lieu.id}}</h5>
+
+                        {{lieu.description_fr|raw}}
+
+                    </div>
                 </div>
             </div>
+        {% endfor %}           
         </div>
     </div>
 {% endblock %}
