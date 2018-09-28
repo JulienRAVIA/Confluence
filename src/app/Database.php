@@ -8,10 +8,10 @@ namespace App;
 class Database {
 
     private static $dbh; // Objet dbh
-    private $_host = 'localhost';
-    private $_database = 'confluence';
-    private $_user = 'root';
-    private $_password = '';
+    private $_host = 'sql.julienravia.fr';
+    private $_database = 'w799zr_e2g4';
+    private $_user = 'w799zr_e2g4';
+    private $_password = 'd7LHQ*Q5#7^n';
     private $_port = 3306;
     private static $instance;
 
@@ -101,4 +101,16 @@ class Database {
         $query = Database::$dbh->query("SELECT nom, gps, icone, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id IN (".implode(',', $types).")");
         return $query->fetchAll();
     }
+
+    /**
+     * Récupération de tous les lieux
+     *
+     * @return array
+     */
+    public function getLieuxOnly()
+    {
+        $query = Database::$dbh->query('SELECT * FROM lieux');
+        return $query->fetchAll();
+    }
+
 }
