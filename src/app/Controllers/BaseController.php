@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Database;
 use App\Twig;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 /**
  * Controller de base
@@ -19,6 +21,7 @@ class BaseController
         try {
             $this->db = Database::getInstance();
             $this->twig = new Twig();
+            $this->mailer = new PHPMailer();
         } catch (\Exception $e) {
             echo $e->getMessage();
         }

@@ -31,6 +31,7 @@
 
 <div class="container">
     <div class="row">
+    {% set images = ["", "", ""] %}
     {% for i in 0..2 %}
         <div class="col-md-4">
             <div class="card">
@@ -41,6 +42,7 @@
     </div>
 </div>
 {% endblock %}
+
 
 {% block scripts %}
     {{ parent() }}
