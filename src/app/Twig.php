@@ -40,6 +40,8 @@ class Twig
     		echo $this->_twig->render($view, $array);
     	}
     }
+
+
 }
 
 ?>
