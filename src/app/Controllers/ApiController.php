@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 /**
- * Controleur de la page d'accueil
+ * Api Controller (JSON datas)
  */
 class ApiController extends BaseController 
 {
     /**
-     * On affiche la page d'accueil si connecté, 
-     * sinon on affiche la page de connexion
+     * Return JSON response with locations by types id
+     * 
+     * @method POST
      */
     public function lieuxByTypes() {
         $types = $_POST['types'];
@@ -20,10 +21,9 @@ class ApiController extends BaseController
     }
     
     /**
-     * On recupère les lieux à partir d'un type de lieu
-     * qu'on renvoie au format JSON
+     * Return JSON response with location by type id
      * 
-     * @return array $request
+     * @method GET
      */
     public function lieuxByType($request) {
         $type = $request['id'];
@@ -33,9 +33,9 @@ class ApiController extends BaseController
     }
 
     /**
-     * On récupère toutes les informations d'un
+     * Return JSON response with location types
      *
-     * @return void
+     * @method GET|POST
      */
     public function types()
     {

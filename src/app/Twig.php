@@ -3,7 +3,7 @@
 namespace App;
 
 /**
- * Renderer Twig pour le fonctionnement de la classe View (Facade)
+ * Twig Renderer for view function
  */
 class Twig
 {
@@ -11,7 +11,7 @@ class Twig
     private $_loader;
 
     /**
-     * Instanciation de l'objet Twig
+     * Twig object instanciation
      */
     public function __construct()
     {
@@ -27,12 +27,13 @@ class Twig
     }
 
     /**
-     * Fonction de rendu d'une vue
-     * @param  string $view  Vue à afficher
-     * @param  array  $array Paramètres à passer à la vue
-     * @return twigView      Vue twig
+     * Render function
+     * 
+     * @param  string $view  View to display
+     * @param  array  $array Parameters to bind
+     * @return twigView      Twig view
      */
-    public function render($view, $array = array())
+    public function render(string $view, $array = array())
     {
     	if(empty($array)) {
     		echo $this->_twig->render($view);

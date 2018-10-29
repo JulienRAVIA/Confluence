@@ -1,5 +1,6 @@
 /vendor/
-/public/img/photos/
 .vscode
+.vs
 .idea
 .phpintel
+.env

@@ -2,75 +2,132 @@
 
 namespace App;
 
+use Curl\Curl;
+
+/**
+ * OpenWeather API Class for getting City Weather
+ */
 class OpenWeather
 {
     /**
-     * Clé API OpenWeather
+     * @var string $apiKey Clé API OpenWeather
      */
-    const API_KEY = 'cb0611ac707099f9e5824b0954cdd093';
-    private $var;
+    private $apiKey;
 
-    public function __construct($city, $country, $units = 'metric') 
+    /**
+     * @var $response
+     */
+    private $response;
+
+    /**
+     * @param string $city City wanted
+     * @param string $country Country
+     * @param string $units Unit for temperature (metric)
+     */
+    public function __construct(string $city, string $country, $units = 'metric') 
     {
-        $parameters = implode(',', compact('city', 'country'));
+        $this->apiKey = getenv('API_OPENWEATHER');
         
-        $query = file_get_contents('http://api.openweathermap.org/data/2.5/weather?q='.$parameters.'&units='.$units.'&lang='.$country.'&appid='.self::API_KEY);
-        if($query) {
-            $this->json_response  = json_decode($query);
-        } else {
+        $curl = new Curl();
+        $curl->get('http://api.openweathermap.org/data/2.5/weather', array(
+                    'q' => implode(',', compact('city', 'country')),
+                    'units' => $units,
+                    'lang' => $country,
+                    'appId' => $this->apiKey
+            )
+        );
+        if ($curl->error) {
             throw new \Exception('Erreur lors de la récupération des données de météo');
+        } else {
+            $this->response = $curl->response;
         }
     }
 
-    public function dump()
-    {
-        var_dump($this->json_response);
-    }
-
-    public function getTemperature()
+    /**
+     * Return temperatures
+     *
+     * @return array
+     */
+    public function getTemperatures()
     {
         $temperatures = array(
-            'min' => $this->json_response['main']['temp_min'],
-            'max' => $this->json_response['main']['temp_max'],
-            'now' => $this->json_response['main']['temp']
+            'min' => $this->response->main->temp_min,
+            'max' => $this->response->main->temp_max,
+            'now' => $this->response->main->temp
         );
+
         return $temperatures;
     }
 
+    /**
+     * Return sunrise time
+     *
+     * @return \DateTime
+     */
     public function getSunrise()
     {
         $date = new \DateTime();
-        $date->setTimestamp($this->json_response['sys']['sunrise']);
+        $date->setTimestamp($this->response->sys->sunrise);
 
         return $date;
     }
 
+    /**
+     * Return sunset time
+     *
+     * @return \DateTime
+     */
     public function getSunset()
     {
         $date = new \DateTime();
-        $date->setTimestamp($this->json_response['sys']['sunset']);
+        $date->setTimestamp($this->response->sys->sunset);
 
         return $date;
     }
 
+    /**
+     * Return Wind datas
+     *
+     * @return array
+     */
     public function getWind()
     {
-        return $this->json_response['wind'];
+        return $this->response->wind;
     }
     
+    /**
+     * Return humidity
+     *
+     * @return void
+     */
     public function getHumidity()
     {
-        return $this->json_response['main']['humidity'];
+        return $this->response->main->humidity;
     }
     
+    /**
+     * Return weather (description, image)
+     *
+     * @return array
+     */
     public function getWeather()
     {
         $weather = array(
-            'short_description' => $this->json_response['weather'][0]['main'],
-            'image' => $this->json_response['weather'][0]['icon'],
-            'description' => ucfirst($this->json_response['weather'][0]['description'])
+            'short_description' => $this->response->weather[0]->main,
+            'image' => $this->response->weather[0]->icon,
+            'description' => ucfirst($this->response->weather[0]->description)
         );
 
         return $weather;
+    }
+
+    /**
+     * Dump response
+     *
+     * @return void
+     */
+    public function dump()
+    {
+        var_dump($this->response);
     }
 }

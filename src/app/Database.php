@@ -7,31 +7,63 @@ namespace App;
  */
 class Database {
 
+    /**
+     * @var PDO 
+     */
     private static $dbh; // Objet dbh
-    private $_host = 'sql.julienravia.fr';
-    private $_database = 'w799zr_e2g4';
-    private $_user = 'w799zr_e2g4';
-    private $_password = 'd7LHQ*Q5#7^n';
-    private $_port = 3306;
+
+    /**
+     * @var string Database host
+     */
+    private $host;
+
+    /**
+     * @var string Database name
+     */
+    private $database;
+
+    /**
+     * @var string Database user
+     */
+    private $user;
+
+    /**
+     * @var string Database password
+     */
+    private $password;
+
+    /** 
+     * @var int Database port 
+    */
+    private $port;
+    
+    /**
+     * @var Database Database instance
+     */
     private static $instance;
 
     /**
      * Constructeur avec la création de l'instance de base de données
      */
     private function __construct() {
-        $user = $this->_user;
-        $password = $this->_password;
+        $this->host = getenv('DATABASE_HOST');
+        $this->port = getenv('DATABASE_PORT');
+        $this->database = getenv('DATABASE_NAME');
+        $this->user = getenv('DATABASE_USER');
+        $this->password = getenv('DATABASE_PASSWORD');
+
+
         $options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
         $options[\PDO::MYSQL_ATTR_INIT_COMMAND] = "SET NAMES utf8";
 
-        $dsn = 'mysql:host=' . $this->_host .
-                ';dbname=' . $this->_database;
+        $dsn = 'mysql:host=' . $this->host .
+                ';dbname=' . $this->database;
         // Au besoin :
-        //';port='      . $this->_port .
+        //';port='      . $this->port .
         //';connect_timeout=15';
         // Création du pdo
         try {
-            Database::$dbh = new \PDO($dsn, $user, $password, $options);
+            Database::$dbh = new \PDO($dsn, $this->user, $this->password, $options);
             Database::$dbh->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         } catch (\PDOException $e) {
             throw new \Exception('Impossible de se connecter à la base de données');
@@ -77,7 +109,7 @@ class Database {
      * Récupération sous forme de tableau (nom, coordonnées GPS, icone du type de lieu)
      * des lieux ayant pour type le type renseigné en paramètre
      *
-     * @param array $types Identifiant dU type à filtrer
+     * @param array $types Identifiant du type à filtrer
      *
      * @return array 
      */

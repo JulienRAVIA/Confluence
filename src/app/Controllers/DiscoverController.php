@@ -2,16 +2,19 @@
 
 namespace App\Controllers;
 
-/** Controlleur de la page Découvrir */
+/**
+ * Controller Discover page
+ */
 class DiscoverController extends BaseController
 {
     /**
-     * Page d'accueil
+     * Display homepage
      */
     public function index()
     {
         $types = $this->db->getTypes();
         $lieux = $this->db->getLieuxOnly();
+
         return $this->render('decouvrir.html.twig', compact('lieux','types'));
     }
 }

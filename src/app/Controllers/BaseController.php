@@ -8,13 +8,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 /**
- * Controller de base
+ * BaseController 
  */
-class BaseController
+abstract class BaseController
 {
-
     /**
-     * Création des variables de service
+     * Create services
      */
     public function __construct()
     {
@@ -28,14 +27,14 @@ class BaseController
     }
 
     /**
-     * Retourne le template compilé
+     * Return compiled template
      *
-     * @param string $view Chemin vers la vue
-     * @param array  $attributes Paramètres à passer
+     * @param string $view View path
+     * @param array  $attributes Parameters to pass
      *
      * @return void
      */
-    public function render($view, $attributes = null) {
+    protected function render(string $view, $attributes = null) {
         return $this->twig->render($view, $attributes);
     }
 }

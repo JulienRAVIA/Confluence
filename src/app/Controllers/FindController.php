@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 /**
- * Controller de la page Se repérer
+ * Controller findpage
  */
 class FindController extends BaseController
 {
     /**
-     * Page d'accueil
+     * Dispay homepage
      */
     public function index()
     {

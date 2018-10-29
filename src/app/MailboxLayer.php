@@ -2,53 +2,111 @@
 
 namespace App;
 
+use Curl\Curl;
+
+/**
+ * MailboxLayer API Class for checking if an email is valid
+ */
 class MailboxLayer
 {
     /**
-     * Clé API MailboxLayer
+     * @var string $apiKey
      */
-    const API_KEY = '0298171f62e0037d75944220b3f3b4f9';
+    private $apiKey;
 
+    /**
+     * @var $response
+     */
+    private $response;
+
+    /**
+     * @param string $email Email to check
+     */
     public function __construct(string $email)
     {
-        $query = file_get_contents('http://apilayer.net/api/check?access_key='.self::API_KEY.'&email='.$email.'&smtp=1&format=1');
-        if($query) {
-            $this->json_result = json_decode($query);
-        } else {
+        $this->apiKey = getenv('API_MAILBOX_LAYER');
+
+        $curl = new Curl();
+        $curl->get('http://apilayer.net/api/check', array(
+                'access_key' => $this->apiKey,
+                'email' => $email,
+                'smtp' => 1,
+                'format' => 1
+            )
+        );
+
+        if ($curl->error) {
             throw new \Exception('Erreur lors de la récupération des données');
+        } else {
+            $this->response = $curl->response;
         }
     }
 
+    /**
+     * Return if format email address is valid
+     *
+     * @return bool
+     */
     public function isFormatValid()
     {
-        return (boolean) $this->json_result->format_valid;
+        return (boolean) $this->response->format_valid;
     }
 
+    /**
+     * Return if MX Records are found
+     *
+     * @return bool
+     */
     public function isMxFound()
     {
-        return (boolean) $this->json_result->mx_found;
+        return (boolean) $this->response->mx_found;
     }
 
+    /**
+     * Return if SMTP is checked
+     *
+     * @return void
+     */
     public function smtpCheck()
     {
-        return (boolean) $this->json_result->smtp_check;
+        return (boolean) $this->response->smtp_check;
     }
-
+    
+    /**
+     * Return email address
+     *
+     * @return void
+     */
     public function getEmailAddress()
     {
-        return (string) $this->json_result->email;
+        return (string) $this->response->email;
     }
 
+    /**
+     * Return email user
+     *
+     * @return void
+     */
     public function getUser()
     {
-        return (string) $this->json_result->user;
+        return (string) $this->response->user;
     }
 
+    /**
+     * Return email domain
+     *
+     * @return void
+     */
     public function getDomain()
     {
-        return (string) $this->json_result->user;
+        return (string) $this->response->user;
     }
 
+    /**
+     * Return if user email address is valid
+     *
+     * @return bool
+     */
     public function isValid()
     {
         if(!$this->isFormatValid())
@@ -61,8 +119,11 @@ class MailboxLayer
         return true;
     }
 
+    /**
+     * Dump response
+     */
     public function dump()
     {
-        var_dump($this->json_result);
+        var_dump($this->response);
     }
 }

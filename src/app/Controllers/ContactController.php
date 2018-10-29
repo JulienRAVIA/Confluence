@@ -4,23 +4,22 @@ namespace App\Controllers;
 
 use App\MailboxLayer;
 
+/**
+ * Contact Controller
+ */
 class ContactController extends BaseController
 {
+    // Default recipient
     const EMAIL_ADDRESS = 'julien.ravia@gmail.com';
-    const AUTH_EMAIL = 'sio.bonaparte@gmail.com';
-    const AUTH_PASSWORD = 'sCAtenTU';
-    const HOST = 'smtp.gmail.com';
 
-    public function index()
-    {
-        echo $this->render('contact.html.twig');
-    }
-
+    /**
+     * Check form fields & send email
+     *
+     * @return void
+     */
     public function send() 
     {
-        /**
-         * Déclaration des champs du formulaire
-         */
+        // Form fields
         $fields = [
             'email_address' => [
                 'required' => true,
@@ -36,8 +35,8 @@ class ContactController extends BaseController
             ],
             'subject' => [
                 'required' => true,
-                'min' => 5,
-                'max' => 50,
+                'min' => 1,
+                'max' => 25,
                 'value' => filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING)
             ],
             'name' => [
@@ -54,41 +53,37 @@ class ContactController extends BaseController
             ],
         ];
 
-        /**
-         * On vérifie pour chaque champ normalement rempli du formulaire qu'il soit correctement rempli 
-         */
+        // We check if every field is correctly filled and is valid
         foreach ($fields as $key => $field) {
             if($key == 'email_address')
                 $email = new MailboxLayer($field['value']);
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
-                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli', 'code' => 'error'));
+                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error'));
                 return false;
             }
         }
 
-        /**
-         * On vérifie que l'adresse mail soit valide
-         */
+        // We check if email address is valid
         if(!$email->isValid()) {
             echo json_encode(array('message' => 'Cette adresse mail n\'est pas valide', 'code' => 'error'));
             return false;
         }
         
-        // Identifiants
+        // Credentials
         $this->mailer->isSMTP(); 
-        $this->mailer->SMTPAuth = true;                               // Enable SMTP authentication
-        $this->mailer->Host = self::HOST;  // Specify main and backup SMTP servers
-        $this->mailer->Username = self::AUTH_EMAIL;                 // SMTP username
-        $this->mailer->Password = self::AUTH_PASSWORD;                           // SMTP password
-        $this->mailer->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $this->mailer->Port = 587;                                    // TCP port to connect to
+        $this->mailer->SMTPAuth = true;                          // Enable SMTP authentication
+        $this->mailer->Host = getenv('SMTP_HOST');               // Specify main and backup SMTP servers
+        $this->mailer->Username = getenv('SMTP_USER');           // SMTP username
+        $this->mailer->Password = getenv('SMTP_PASSWORD'); ;     // SMTP password
+        $this->mailer->SMTPSecure = 'tls';                       // Enable TLS encryption, `ssl` also accepted
+        $this->mailer->Port = getenv('SMTP_PORT');               // TCP port to connect to
         
-        // Destinataires et expediteurs
+        // Recipients & sender
         $this->mailer->setFrom($email->getEmailAddress(), 'Mailer');
-        $this->mailer->addAddress(self::EMAIL_ADDRESS, 'Joe User');
-        $this->mailer->addReplyTo($email->getEmailAddress(), 'Information');
+        $this->mailer->addAddress(self::EMAIL_ADDRESS);
+        $this->mailer->addReplyTo($email->getEmailAddress());
         
-        // Contenu du mail
+        // Mail body
         $this->mailer->isHTML(true);                                  // Set email format to HTML
         $this->mailer->Subject = $fields['subject']['value'];
         $this->mailer->Body = strip_tags($fields['message']['value']);
@@ -107,6 +102,15 @@ class ContactController extends BaseController
         }        
     }
     
+    /**
+     * Check if field is correctly filled 
+     *
+     * @param string $text Text to check
+     * @param int $minLength Min text length
+     * @param int $maxLength Max text length
+     *
+     * @return bool
+     */
     public function isSpam(string $text, int $minLength = 10, int $maxLength = 50)
     {
         return (strlen($text) <= $minLength) || (strlen($text) >= $maxLength);

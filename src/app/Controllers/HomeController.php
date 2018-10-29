@@ -3,13 +3,12 @@
 namespace App\Controllers;
 
 /**
- * Controleur de la page d'accueil
+ * Controller homepage
  */
 class HomeController extends BaseController 
 {
     /**
-     * On affiche la page d'accueil si connecté, 
-     * sinon on affiche la page de connexion
+     * Display homepage
      */
     public function index() {
         $types = $this->db->getTypes();
