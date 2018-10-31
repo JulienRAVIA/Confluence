@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\MailboxLayer;
+use App\Util\Regex;
 
 /**
  * Contact Controller
@@ -43,27 +44,35 @@ class ContactController extends BaseController
                 'required' => true,
                 'min' => 1,
                 'max' => 25,
-                'value' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING)
+                'value' => filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING),
+                'regex' => '/^[a-zA-Z]+$/'
             ],
             'firstname' => [
                 'required' => true,
                 'min' => 1,
                 'max' => 25,
-                'value' => filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING)
+                'value' => filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING),
+                'regex' => '/^[a-zA-Z]+$/'
             ],
         ];
 
         // We check if every field is correctly filled and is valid
         foreach ($fields as $key => $field) {
-            if($key == 'email_address')
-                $email = new MailboxLayer($field['value']);
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
                 echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error'));
                 return false;
             }
+            if(isset($field['regex'])) {
+                $regex = new Regex($field['regex']);
+                if(!$regex->isMatchingWith($field['value']) && !$regex->isValidRegularExpression()) {
+                    echo json_encode(array('message' => 'Certains champs ne contiennent pas des données valides', 'code' => 'error'));
+                    return false;
+                }
+            }
         }
-
+        
         // We check if email address is valid
+        $email = new MailboxLayer($fields['email_address']['value']);
         if(!$email->isValid()) {
             echo json_encode(array('message' => 'Cette adresse mail n\'est pas valide', 'code' => 'error'));
             return false;
