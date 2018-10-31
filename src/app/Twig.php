@@ -11,7 +11,7 @@ class Twig
     private $_loader;
 
     /**
-     * Twig object instanciation
+     * Instanciation de l'objet Twig
      */
     public function __construct()
     {
@@ -27,10 +27,10 @@ class Twig
     }
 
     /**
-     * Render function
+     * Fonction de render
      * 
-     * @param  string $view  View to display
-     * @param  array  $array Parameters to bind
+     * @param  string $view  Chemin de la vue
+     * @param  array  $array Paramètres à passer à la vue
      * @return twigView      Twig view
      */
     public function render(string $view, $array = array())
@@ -41,8 +41,6 @@ class Twig
     		echo $this->_twig->render($view, $array);
     	}
     }
-
-
 }
 
 ?>

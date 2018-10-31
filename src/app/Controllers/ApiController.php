@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 /**
- * Api Controller (JSON datas)
+ * Api Controller
  */
 class ApiController extends BaseController 
 {
     /**
-     * Return JSON response with locations by types id
+     * Retourne réponse JSON avec les lieux par types
      * 
      * @method POST
      */
@@ -21,7 +21,7 @@ class ApiController extends BaseController
     }
     
     /**
-     * Return JSON response with location by type id
+     * Retourne réponse JSON avec les lieux du type passé en paramètre
      * 
      * @method GET
      */
@@ -33,7 +33,7 @@ class ApiController extends BaseController
     }
 
     /**
-     * Return JSON response with location types
+     * Retourne réponse JSON avec tous les types de lieux
      *
      * @method GET|POST
      */

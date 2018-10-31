@@ -5,7 +5,8 @@ namespace App;
 use Curl\Curl;
 
 /**
- * OpenWeather API Class for getting City Weather
+ * Classe API pour fonctionner avec OpenWeather
+ * Permet de récupérer les données météo d'une ville
  */
 class OpenWeather
 {
@@ -20,9 +21,9 @@ class OpenWeather
     private $response;
 
     /**
-     * @param string $city City wanted
-     * @param string $country Country
-     * @param string $units Unit for temperature (metric)
+     * @param string $city Ville voulue
+     * @param string $country Pays
+     * @param string $units Unité de température
      */
     public function __construct(string $city, string $country, $units = 'metric') 
     {
@@ -44,7 +45,7 @@ class OpenWeather
     }
 
     /**
-     * Return temperatures
+     * Retourne températures (min, max, actuelle)
      *
      * @return array
      */
@@ -60,7 +61,7 @@ class OpenWeather
     }
 
     /**
-     * Return sunrise time
+     * Retourne l'heure de lever du soleil
      *
      * @return \DateTime
      */
@@ -73,7 +74,7 @@ class OpenWeather
     }
 
     /**
-     * Return sunset time
+     * Retourne heure coucher du soleil
      *
      * @return \DateTime
      */
@@ -86,7 +87,7 @@ class OpenWeather
     }
 
     /**
-     * Return Wind datas
+     * Retourne données de vent
      *
      * @return array
      */
@@ -96,7 +97,7 @@ class OpenWeather
     }
     
     /**
-     * Return humidity
+     * Retourne données humidité
      *
      * @return void
      */
@@ -106,7 +107,7 @@ class OpenWeather
     }
     
     /**
-     * Return weather (description, image)
+     * Retourne info météo (image, description)
      *
      * @return array
      */
@@ -122,7 +123,7 @@ class OpenWeather
     }
 
     /**
-     * Dump response
+     * Dump réponse
      *
      * @return void
      */

@@ -5,7 +5,8 @@ namespace App;
 use Curl\Curl;
 
 /**
- * MailboxLayer API Class for checking if an email is valid
+ * Classe API pour fonctionner avec MailBoxLayer
+ * Vérifie la validité d'une adresse mail
  */
 class MailboxLayer
 {
@@ -20,7 +21,7 @@ class MailboxLayer
     private $response;
 
     /**
-     * @param string $email Email to check
+     * @param string $email Email à vérifier
      */
     public function __construct(string $email)
     {
@@ -43,7 +44,7 @@ class MailboxLayer
     }
 
     /**
-     * Return if format email address is valid
+     * Return si l'adresse mail renseignée est au format valide
      *
      * @return bool
      */
@@ -53,7 +54,7 @@ class MailboxLayer
     }
 
     /**
-     * Return if MX Records are found
+     * Retourne si le DNS email est valide
      *
      * @return bool
      */
@@ -63,7 +64,7 @@ class MailboxLayer
     }
 
     /**
-     * Return if SMTP is checked
+     * Retourne si le SMTP est valide
      *
      * @return void
      */
@@ -73,7 +74,7 @@ class MailboxLayer
     }
     
     /**
-     * Return email address
+     * Retourne l'adresse email
      *
      * @return void
      */
@@ -83,7 +84,7 @@ class MailboxLayer
     }
 
     /**
-     * Return email user
+     * Retourne le nom utilisateur de l'adresse mail (avant @)
      *
      * @return void
      */
@@ -93,7 +94,7 @@ class MailboxLayer
     }
 
     /**
-     * Return email domain
+     * Retourne le domaine de l'adresse mail
      *
      * @return void
      */
@@ -103,7 +104,7 @@ class MailboxLayer
     }
 
     /**
-     * Return if user email address is valid
+     * Retourne si l'adresse email renseignée est valide
      *
      * @return bool
      */
@@ -120,7 +121,7 @@ class MailboxLayer
     }
 
     /**
-     * Dump response
+     * Dump réponse
      */
     public function dump()
     {

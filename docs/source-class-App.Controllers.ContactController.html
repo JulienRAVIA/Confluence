@@ -63,11 +63,11 @@
 </span></span><span class="l" id="line-10"><span class="php-comment"> */</span>
 </span><span class="l" id="line-11"><span class="php-keyword1">class</span> ContactController <span class="php-keyword1">extends</span> BaseController
 </span><span class="l" id="line-12">{
-</span><span class="l" id="line-13">    <span class="php-comment">// Default recipient</span>
+</span><span class="l" id="line-13">    <span class="php-comment">// Destinataire par défaut</span>
 </span><span class="l" id="line-14">    <span class="php-keyword1">const</span> EMAIL_ADDRESS = <span class="php-quote">'julien.ravia@gmail.com'</span>;
 </span><span class="l" id="line-15">
 </span><span class="l" id="line-16">    <span class="php-comment">/**
-</span></span><span class="l" id="line-17"><span class="php-comment">     * Check form fields &amp; send email
+</span></span><span class="l" id="line-17"><span class="php-comment">     * Vérification du formulaire et envoi du mail
 </span></span><span class="l" id="line-18"><span class="php-comment">     *
 </span></span><span class="l" id="line-19"><span class="php-comment">     * @return void
 </span></span><span class="l" id="line-20"><span class="php-comment">     */</span>
@@ -109,7 +109,7 @@
 </span><span class="l" id="line-56">            ],
 </span><span class="l" id="line-57">        ];
 </span><span class="l" id="line-58">
-</span><span class="l" id="line-59">        <span class="php-comment">// We check if every field is correctly filled and is valid</span>
+</span><span class="l" id="line-59">        <span class="php-comment">// On vérifie si chaque champ est correctement renseigné</span>
 </span><span class="l" id="line-60">        <span class="php-keyword1">foreach</span> (<span class="php-var">$fields</span> <span class="php-keyword1">as</span> <span class="php-var">$key</span> =&gt; <span class="php-var">$field</span>) {
 </span><span class="l" id="line-61">            <span class="php-keyword1">if</span>(<span class="php-var">$this</span>-&gt;isSpam(<span class="php-var">$field</span>[<span class="php-quote">'value'</span>], <span class="php-var">$field</span>[<span class="php-quote">'min'</span>], <span class="php-var">$field</span>[<span class="php-quote">'max'</span>]) || (<span class="php-var">$field</span>[<span class="php-quote">'required'</span>] &amp;&amp; <span class="php-keyword1">empty</span>(<span class="php-var">$field</span>[<span class="php-quote">'value'</span>]))) {
 </span><span class="l" id="line-62">                <span class="php-keyword1">echo</span> <span class="php-keyword2">json_encode</span>(<span class="php-keyword1">array</span>(<span class="php-quote">'message'</span> =&gt; <span class="php-quote">'Un des champs n\'est pas correctement rempli '</span>. <span class="php-var">$key</span>, <span class="php-quote">'code'</span> =&gt; <span class="php-quote">'error'</span>));
@@ -124,14 +124,14 @@
 </span><span class="l" id="line-71">            }
 </span><span class="l" id="line-72">        }
 </span><span class="l" id="line-73">        
-</span><span class="l" id="line-74">        <span class="php-comment">// We check if email address is valid</span>
+</span><span class="l" id="line-74">        <span class="php-comment">// On vérifie si l'adresse mail renseignée est valide</span>
 </span><span class="l" id="line-75">        <span class="php-var">$email</span> = <span class="php-keyword1">new</span> MailboxLayer(<span class="php-var">$fields</span>[<span class="php-quote">'email_address'</span>][<span class="php-quote">'value'</span>]);
 </span><span class="l" id="line-76">        <span class="php-keyword1">if</span>(!<span class="php-var">$email</span>-&gt;isValid()) {
 </span><span class="l" id="line-77">            <span class="php-keyword1">echo</span> <span class="php-keyword2">json_encode</span>(<span class="php-keyword1">array</span>(<span class="php-quote">'message'</span> =&gt; <span class="php-quote">'Cette adresse mail n\'est pas valide'</span>, <span class="php-quote">'code'</span> =&gt; <span class="php-quote">'error'</span>));
 </span><span class="l" id="line-78">            <span class="php-keyword1">return</span> <span class="php-keyword1">false</span>;
 </span><span class="l" id="line-79">        }
 </span><span class="l" id="line-80">        
-</span><span class="l" id="line-81">        <span class="php-comment">// Credentials</span>
+</span><span class="l" id="line-81">        <span class="php-comment">// Identifiants</span>
 </span><span class="l" id="line-82">        <span class="php-var">$this</span>-&gt;mailer-&gt;isSMTP(); 
 </span><span class="l" id="line-83">        <span class="php-var">$this</span>-&gt;mailer-&gt;SMTPAuth = <span class="php-keyword1">true</span>;                          <span class="php-comment">// Enable SMTP authentication</span>
 </span><span class="l" id="line-84">        <span class="php-var">$this</span>-&gt;mailer-&gt;Host = <span class="php-keyword2">getenv</span>(<span class="php-quote">'SMTP_HOST'</span>);               <span class="php-comment">// Specify main and backup SMTP servers</span>
@@ -140,13 +140,13 @@
 </span><span class="l" id="line-87">        <span class="php-var">$this</span>-&gt;mailer-&gt;SMTPSecure = <span class="php-quote">'tls'</span>;                       <span class="php-comment">// Enable TLS encryption, `ssl` also accepted</span>
 </span><span class="l" id="line-88">        <span class="php-var">$this</span>-&gt;mailer-&gt;Port = <span class="php-keyword2">getenv</span>(<span class="php-quote">'SMTP_PORT'</span>);               <span class="php-comment">// TCP port to connect to</span>
 </span><span class="l" id="line-89">        
-</span><span class="l" id="line-90">        <span class="php-comment">// Recipients &amp; sender</span>
+</span><span class="l" id="line-90">        <span class="php-comment">// Destinataires &amp; expediteurs</span>
 </span><span class="l" id="line-91">        <span class="php-var">$this</span>-&gt;mailer-&gt;setFrom(<span class="php-var">$email</span>-&gt;getEmailAddress(), <span class="php-quote">'Mailer'</span>);
 </span><span class="l" id="line-92">        <span class="php-var">$this</span>-&gt;mailer-&gt;addAddress(self::EMAIL_ADDRESS);
 </span><span class="l" id="line-93">        <span class="php-var">$this</span>-&gt;mailer-&gt;addReplyTo(<span class="php-var">$email</span>-&gt;getEmailAddress());
 </span><span class="l" id="line-94">        
-</span><span class="l" id="line-95">        <span class="php-comment">// Mail body</span>
-</span><span class="l" id="line-96">        <span class="php-var">$this</span>-&gt;mailer-&gt;isHTML(<span class="php-keyword1">true</span>);                                  <span class="php-comment">// Set email format to HTML</span>
+</span><span class="l" id="line-95">        <span class="php-comment">// Corps du mail</span>
+</span><span class="l" id="line-96">        <span class="php-var">$this</span>-&gt;mailer-&gt;isHTML(<span class="php-keyword1">true</span>);
 </span><span class="l" id="line-97">        <span class="php-var">$this</span>-&gt;mailer-&gt;Subject = <span class="php-var">$fields</span>[<span class="php-quote">'subject'</span>][<span class="php-quote">'value'</span>];
 </span><span class="l" id="line-98">        <span class="php-var">$this</span>-&gt;mailer-&gt;Body = <span class="php-keyword2">strip_tags</span>(<span class="php-var">$fields</span>[<span class="php-quote">'message'</span>][<span class="php-quote">'value'</span>]);
 </span><span class="l" id="line-99">        <span class="php-var">$this</span>-&gt;mailer-&gt;AltBody = <span class="php-keyword2">strip_tags</span>(<span class="php-var">$fields</span>[<span class="php-quote">'message'</span>][<span class="php-quote">'value'</span>]);
@@ -165,11 +165,11 @@
 </span><span class="l" id="line-112">    }
 </span><span class="l" id="line-113">    
 </span><span class="l" id="line-114">    <span class="php-comment">/**
-</span></span><span class="l" id="line-115"><span class="php-comment">     * Check if field is correctly filled 
+</span></span><span class="l" id="line-115"><span class="php-comment">     * On vérifie si un champ est correctement renseigné
 </span></span><span class="l" id="line-116"><span class="php-comment">     *
-</span></span><span class="l" id="line-117"><span class="php-comment">     * @param string $text Text to check
-</span></span><span class="l" id="line-118"><span class="php-comment">     * @param int $minLength Min text length
-</span></span><span class="l" id="line-119"><span class="php-comment">     * @param int $maxLength Max text length
+</span></span><span class="l" id="line-117"><span class="php-comment">     * @param string $text Texte/contenu à verifier
+</span></span><span class="l" id="line-118"><span class="php-comment">     * @param int $minLength Longueur minimale
+</span></span><span class="l" id="line-119"><span class="php-comment">     * @param int $maxLength Longueur maximale
 </span></span><span class="l" id="line-120"><span class="php-comment">     *
 </span></span><span class="l" id="line-121"><span class="php-comment">     * @return bool
 </span></span><span class="l" id="line-122"><span class="php-comment">     */</span>

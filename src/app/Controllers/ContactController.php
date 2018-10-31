@@ -10,11 +10,11 @@ use App\Util\Regex;
  */
 class ContactController extends BaseController
 {
-    // Default recipient
+    // Destinataire par défaut
     const EMAIL_ADDRESS = 'julien.ravia@gmail.com';
 
     /**
-     * Check form fields & send email
+     * Vérification du formulaire et envoi du mail
      *
      * @return void
      */
@@ -56,7 +56,7 @@ class ContactController extends BaseController
             ],
         ];
 
-        // We check if every field is correctly filled and is valid
+        // On vérifie si chaque champ est correctement renseigné
         foreach ($fields as $key => $field) {
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
                 echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error'));
@@ -71,14 +71,14 @@ class ContactController extends BaseController
             }
         }
         
-        // We check if email address is valid
+        // On vérifie si l'adresse mail renseignée est valide
         $email = new MailboxLayer($fields['email_address']['value']);
         if(!$email->isValid()) {
             echo json_encode(array('message' => 'Cette adresse mail n\'est pas valide', 'code' => 'error'));
             return false;
         }
         
-        // Credentials
+        // Identifiants
         $this->mailer->isSMTP(); 
         $this->mailer->SMTPAuth = true;                          // Enable SMTP authentication
         $this->mailer->Host = getenv('SMTP_HOST');               // Specify main and backup SMTP servers
@@ -87,13 +87,13 @@ class ContactController extends BaseController
         $this->mailer->SMTPSecure = 'tls';                       // Enable TLS encryption, `ssl` also accepted
         $this->mailer->Port = getenv('SMTP_PORT');               // TCP port to connect to
         
-        // Recipients & sender
+        // Destinataires & expediteurs
         $this->mailer->setFrom($email->getEmailAddress(), 'Mailer');
         $this->mailer->addAddress(self::EMAIL_ADDRESS);
         $this->mailer->addReplyTo($email->getEmailAddress());
         
-        // Mail body
-        $this->mailer->isHTML(true);                                  // Set email format to HTML
+        // Corps du mail
+        $this->mailer->isHTML(true);
         $this->mailer->Subject = $fields['subject']['value'];
         $this->mailer->Body = strip_tags($fields['message']['value']);
         $this->mailer->AltBody = strip_tags($fields['message']['value']);
@@ -112,11 +112,11 @@ class ContactController extends BaseController
     }
     
     /**
-     * Check if field is correctly filled 
+     * On vérifie si un champ est correctement renseigné
      *
-     * @param string $text Text to check
-     * @param int $minLength Min text length
-     * @param int $maxLength Max text length
+     * @param string $text Texte/contenu à verifier
+     * @param int $minLength Longueur minimale
+     * @param int $maxLength Longueur maximale
      *
      * @return bool
      */

@@ -8,7 +8,7 @@ namespace App\Controllers;
 class FindController extends BaseController
 {
     /**
-     * Dispay homepage
+     * Affiche la page "Se repérer"
      */
     public function index()
     {

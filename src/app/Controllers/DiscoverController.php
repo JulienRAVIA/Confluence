@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 /**
- * Controller Discover page
+ * DiscoverController
  */
 class DiscoverController extends BaseController
 {
     /**
-     * Display homepage
+     * Affiche la page "Découvrir"
      */
     public function index()
     {

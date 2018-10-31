@@ -4,11 +4,12 @@ namespace App\Util;
 
 class Regex
 {
-    /** @var $pattern */
+    /** 
+     * @var $pattern 
+     */
     private $pattern;
 
     /**
-     * Regex constructor.
      * @param string $pattern
      */
     public function __construct(string $pattern)
@@ -17,6 +18,8 @@ class Regex
     }
 
     /**
+     * Vérifie si le texte renseigné en paramètre match avec le pattern
+     * 
      * @param string $string
      * @return bool
      */
@@ -26,6 +29,8 @@ class Regex
     }
 
     /**
+     * Vérifie si le pattern renseigné est valide et est une expression régulière
+     * 
      * @return bool
      */
     public function isValidRegularExpression(): bool
@@ -34,6 +39,8 @@ class Regex
     }
 
     /**
+     * Retourne le pattern
+     * 
      * @return string
      */
     public function getPattern(): string

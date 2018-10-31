@@ -13,7 +13,7 @@ use PHPMailer\PHPMailer\Exception;
 abstract class BaseController
 {
     /**
-     * Create services
+     * Création des variables de service
      */
     public function __construct()
     {
@@ -27,10 +27,10 @@ abstract class BaseController
     }
 
     /**
-     * Return compiled template
+     * Retourne template compilé
      *
-     * @param string $view View path
-     * @param array  $attributes Parameters to pass
+     * @param string $view Chemin de la vue
+     * @param array  $attributes Paramètres à passer
      *
      * @return void
      */
