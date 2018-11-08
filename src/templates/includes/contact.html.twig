@@ -10,26 +10,26 @@
       <form action="" id="contact">
         <div class="modal-body">
           <div class="form-group">
-            <input type="text" class="form-control" name="firstname" id="field_firstname" placeholder="Prénom" required value="jhfjezf">
+            <input type="text" class="form-control" name="firstname" id="field_firstname" placeholder="Prénom" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="name" id="field_name" placeholder="Nom" value="éejhegj">
+            <input type="text" class="form-control" name="name" id="field_name" placeholder="Nom" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="field_subject" placeholder="Sujet de votre mail" value="éejhegj">
+            <input type="text" class="form-control" name="subject" id="field_subject" placeholder="Sujet de votre mail" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="field_email_address" name="email_address" aria-describedby="emailHelp" value="mail@exemple.com">
+            <input type="email" class="form-control" id="field_email_address" placeholder="Mail" name="email_address" aria-describedby="emailHelp" required>
             <small id="emailHelp" class="form-text text-muted">Nous ne diffuserons jamais votre email.</small>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="field_message" name="message" placeholder="Saisissez votre texte" rows="4">ezfezfzef</textarea>
+            <textarea class="form-control" id="field_message" name="message" placeholder="Saisissez votre texte" rows="4" required></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <small>En cliquant sur "Envoyer" vous certifiez avoir lu nos CGU.</small>
+          <small>En cliquant sur "Envoyer" vous certifiez avoir lu nos <a href="/cgu">CGU</a>.</small>
           <button type="reset" class="btn btn-danger">Réinitialiser</button>
-          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <button type="submit" id="send" class="btn btn-primary">Envoyer</button>
         </button>
         </div>
       </form>

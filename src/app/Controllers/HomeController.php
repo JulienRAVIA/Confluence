@@ -17,4 +17,8 @@ class HomeController extends BaseController
         // $weather->dump();
         echo $this->render('index.html.twig', compact('types'));
     }
+
+    public function cgu() {
+    	echo $this->render('cgu.html.twig');
+    }
 }

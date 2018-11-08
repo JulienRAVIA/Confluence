@@ -11,7 +11,7 @@ use App\Util\Regex;
 class ContactController extends BaseController
 {
     // Destinataire par défaut
-    const EMAIL_ADDRESS = 'julien.ravia@gmail.com';
+    const EMAIL_ADDRESS = 'confluence@yopmail.com';
 
     /**
      * Vérification du formulaire et envoi du mail
@@ -100,10 +100,10 @@ class ContactController extends BaseController
         
         try {
             if($this->mailer->send()) {
-                echo json_encode(array('code' => 'success', 'message' => 'Votre mail à été envoyé, félicitations !'));
+                echo json_encode(array('title' => 'Merci :)', 'code' => 'success', 'message' => 'Votre mail a été envoyé, nous vous ferons un retour dès que possible.'));
                 return true;
             } else {
-                echo json_encode(array('code' => 'error', 'message' => 'Votre mail n\'à pas été envoyé, réessayez !'));
+                echo json_encode(array('title' => 'Oops :(', 'code' => 'error', 'message' => 'Votre mail n\'à pas été envoyé, réessayez !'));
                 return false;
             }
         } catch(Exception $e) {
@@ -123,5 +123,9 @@ class ContactController extends BaseController
     public function isSpam(string $text, int $minLength = 10, int $maxLength = 50)
     {
         return (strlen($text) <= $minLength) || (strlen($text) >= $maxLength);
+    }
+
+    public function isCorrect(string $text) {
+
     }
 }
