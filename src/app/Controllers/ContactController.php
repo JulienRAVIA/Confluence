@@ -59,7 +59,7 @@ class ContactController extends BaseController
         // On vérifie si chaque champ est correctement renseigné
         foreach ($fields as $key => $field) {
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
-                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error'));
+                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error', 'field' => $key));
                 return false;
             }
             if(isset($field['regex'])) {

@@ -7,6 +7,12 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+new L.Control.BootstrapModal({
+    modalId: 'reperes',
+    tooltip: "Repères",
+    glyph: 'map-signs'
+}).addTo(map);
+
 var icons= [];
 $.ajax({
     type: "POST",

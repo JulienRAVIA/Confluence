@@ -25,7 +25,3 @@ $(formContact).on('submit', function(event) {
         }
     })
 });
-
-
-
-
