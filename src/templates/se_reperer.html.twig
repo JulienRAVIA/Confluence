@@ -5,6 +5,7 @@
 {% block styles %}
     {{ parent() }}
     <link rel="stylesheet" href="css/leaflet/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet/leaflet-bootstrapmodal.css">
 {% endblock %}
 
 
@@ -14,30 +15,20 @@
             <h4>Se repérer</h4>
         </div>
     </div>
-
-    <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <h4>Se repérer</h4>
-                <form id="types">
-                    {% for type in types %}
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="type{{ type.id }}" value="{{ type.id }}">
-                            <label class="custom-control-label" for="type{{ type.id }}"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle_fr }}</label>
-                        </div>
-                    {% endfor %}
-                </form>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div id="mapid"></div>
             </div>
         </div>
-    </div>
+
+    {% include 'includes/reperes.html.twig' with types %}
 {% endblock %}
+
 
 {% block scripts %}
     {{ parent() }}
     <script src="/js/leaflet/leaflet.js"></script>
     <script src="/js/leaflet/leaflet-providers.js"></script>
+    <script src="/js/leaflet/leaflet-bootstrapmodal.js"></script>
     <script src="/js/map.js"></script>
 {% endblock %}
