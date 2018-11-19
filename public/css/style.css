@@ -71,3 +71,7 @@ footer {
     text-align: justify;
     text-justify: inter-word;
 }
+
+.nav-tabs {
+    width: 100%;
+}

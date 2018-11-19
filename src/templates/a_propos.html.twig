@@ -1,0 +1,33 @@
+{% extends 'includes/template.html.twig' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block body %}
+    <div class="jumbotron" id="jumbotron-menu" style="background-image: url('img/photos/unbopon.png');">
+        <div class="container">
+            <h4>A propos</h4>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="dates-tab" data-toggle="tab" href="#dates" role="tab" aria-controls="dates" aria-selected="true">En quelques dates</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chiffres-tab" data-toggle="tab" href="#chiffres" role="tab" aria-controls="chiffres" aria-selected="false">En quelques chiffres</a>
+          </li>
+        </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="dates" role="tabpanel" aria-labelledby="dates-tab">
+            <p>djioqijdzdjiozqfjigrjibjizjiefjio</p>
+        </div>
+        <div class="tab-pane fade" id="chiffres" role="tabpanel" aria-labelledby="chiffres-tab">
+            <p>djioqijdzqdqzdzqdzqdzqsdzdjiozqfjigrjibjizjiefjio</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}
