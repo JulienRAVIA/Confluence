@@ -72,6 +72,11 @@ footer {
     text-justify: inter-word;
 }
 
-.nav-tabs {
-    width: 100%;
+.card {
+    margin-top: 30%;
+    margin-left: 10%;
+}
+
+#last {
+    border-right: 1px solid #E8E8E8;
 }
