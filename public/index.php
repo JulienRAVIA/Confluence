@@ -11,8 +11,9 @@ $router->addRoutes(array(
     array('GET', '/', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/se-reperer', 'App\\Controllers\\FindController@index', 'se-reperer'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/decouvrir', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/a-propos', 'App\\Controllers\\AproposController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/a-propos', 'App\\Controllers\\AboutController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/cgu', 'App\\Controllers\\HomeController@cgu', 'cgu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]', 'App\\Controllers\\HomeController@lang', 'switchLang'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/lieux/[i:id]', 'App\\Controllers\\ApiController@lieuxByType', 'lieuxByType'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/contact', 'App\\Controllers\\ContactController@index', 'contact'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/contact/send', 'App\\Controllers\\ContactController@send', 'checkEmail'), // affichage de la page d'accueil ou de la page de connexion si non connecté

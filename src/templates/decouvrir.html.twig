@@ -5,23 +5,15 @@
 {% block body %}
     <div class="jumbotron" id="jumbotron-menu" style="background-image: url('img/photos/unbopon.png');">
         <div class="container">
-            <h4>Découvrir</h4>
+            <h4>{{ trad.discover.title }}</h4>
         </div>
     </div>
     <div class="container">
-        {# <div class="row justify-content-end">
-            <select class="custom-select col-3" id="types">
-                <option selected>Choisissez un type de lieu :</option>
-            {% for type in types %}
-                <option value="{{ type.id }}">{{ type.libelle_fr }}</option>
-            {% endfor %}
-            </select>
-        </div> #}
         <div class="row justify-content-end">
             <ul class="list-inline">
                 <li class="list-inline-item">
                     <a href="">
-                        <i class="fa fa-images"></i> Galerie
+                        <i class="fa fa-images"></i> {{ trad.discover.gallery }}
                     </a>
                 </li>
             </ul>
@@ -31,7 +23,7 @@
                 <ul class="nav  flex-column">
                     {% for type in types %}
                         <li class="nav-item">
-                          <a class="nav-link active" href="#"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle_fr }}</a>
+                          <a class="nav-link active" href="#"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -45,8 +37,8 @@
                             <div class="card-body">
                                 <div class="float-right"><a href=""><i class="fa fa-map-marker-alt"></i></a></div>
 
-                                <h5 class="mt-0">{{lieu.nom}}  {{lieu.id}}</h5>
-                                {{lieu.description_fr|raw}}
+                                <h5 class="mt-0">{{lieu.nom}}</h5>
+                                {{lieu.description|raw}}
                             </div>
                         </div>
                         </div>
