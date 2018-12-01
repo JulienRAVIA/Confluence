@@ -3,15 +3,15 @@
 namespace App\Controllers;
 
 /**
- * AproposController
+ * AboutController
  */
-class AproposController extends BaseController
+class AboutController extends BaseController
 {
     /**
      * Affiche la page "A Propos"
      */
     public function index()
     {
-        return $this->render('a_propos.html.twig');
+        return $this->render('about.html.twig');
     }
 }
