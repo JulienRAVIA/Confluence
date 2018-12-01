@@ -8,7 +8,7 @@ L.Control.BootstrapModal = L.Control.extend({
         // modalId          the DOM ID of the Bootstrap modal, without the # sign. Example: **help**, would connect to the modal with **id="help"**
         // tooltip          the tooltip text for the control
         // glyph            the name of a Bootstrap glyphicon, minus the glyphicon- prefix. Example: **flag**  For more info and full list, http://getbootstrap.com/components/#glyphicons
-        position: 'topright',
+        position: 'topleft',
         modalId: null,
         tooltip: "",
         glyph: 'info-sign'
@@ -34,7 +34,7 @@ L.Control.BootstrapModal = L.Control.extend({
         this.controlDiv           = L.DomUtil.create('div', 'leaflet-control-bootstrapmodal leaflet-bar');
         this.controlDiv.control   = this;
         this.controlDiv.title     = this.options.tooltip;
-        this.controlDiv.innerHTML = '<a href="#"><i class="glyphicon glyphicon-' + this.options.glyph + '"></i></a>';
+        this.controlDiv.innerHTML = '<a href="#"><i class="fa fa-' + this.options.glyph + '"></i></a>';
         L.DomEvent
             .addListener(this.controlDiv, 'mousedown', L.DomEvent.stopPropagation)
             .addListener(this.controlDiv, 'click', L.DomEvent.stopPropagation)
