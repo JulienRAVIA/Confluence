@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use League\Glide\ServerFactory;
+
 /**
  * Api Controller
  */
@@ -42,5 +44,21 @@ class ApiController extends BaseController
         $types = $this->db->getTypes();
         
         echo json_encode($types);
+    }
+
+    public function photos($request)
+    {
+        $path = $request['path'];
+
+        $server = ServerFactory::create([
+            'source' => __DIR__.'/../../../public/img/photos',
+            'cache' => __DIR__.'/../../../cache',
+        ]);
+
+        if($server->sourceFileExists($path)) {
+            $img = $server->outputImage($path, $_GET);
+        } else {
+            header('HTTP/1.0 404 Not Found', true, 404);
+        }
     }
 }

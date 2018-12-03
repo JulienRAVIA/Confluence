@@ -1,0 +1,64 @@
+{% extends 'includes/template.html.twig' %}
+
+{% block title %}Découvrir{% endblock %}
+
+{% block styles %}
+    {{ parent() }}
+    <style>
+        img {
+            max-width: 150px;
+        }
+    </style>
+{% endblock styles %}
+
+{% block body %}
+    <div class="jumbotron" id="jumbotron-menu" style="background-image: url('img/photos/unbopon.png');">
+        <div class="container">
+            <h4>{{ trad.discover.title }}</h4>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="">
+                        <i class="fa fa-images"></i> {{ trad.discover.gallery }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="macy-container">
+            {% for image in images %}
+                <div class="demo">
+                    <a href="/img/photos/{{image}}" data-lity data-lity-target="/img/photos/{{ image }}">
+                        <img src="/api/photos/{{ image }}?w=300" alt="">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/macy.js"></script>
+    <script src="/js/discover.js"></script>
+    <script>
+        var masonry = new Macy({
+            container: '#macy-container',
+            trueOrder: false,
+            waitForImages: false,
+            useOwnImageLoader: false,
+            debug: true,
+            mobileFirst: true,
+            columns: 1,
+            margin: 24,
+            breakAt: {
+                1200: 6,
+                940: 5,
+                520: 3,
+                400: 2
+            }
+        });
+    </script>
+{% endblock %}

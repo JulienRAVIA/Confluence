@@ -11,6 +11,7 @@ $router->addRoutes(array(
     array('GET', '/', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/se-reperer', 'App\\Controllers\\FindController@index', 'se-reperer'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/decouvrir', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/decouvrir/galerie', 'App\\Controllers\\DiscoverController@gallery', 'galerie'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/a-propos', 'App\\Controllers\\AboutController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/cgu', 'App\\Controllers\\HomeController@cgu', 'cgu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]', 'App\\Controllers\\HomeController@lang', 'switchLang'), // affichage de la page d'accueil ou de la page de connexion si non connecté
@@ -20,12 +21,18 @@ $router->addRoutes(array(
     array('POST','/api/lieux', 'App\\Controllers\\ApiController@lieuxByTypes', 'lieuxByTypes'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/api/types', 'App\\Controllers\\ApiController@types', 'types'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/weather', 'App\\Controllers\\ApiController@weather', 'weather'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET','/api/photos/[*:path]', 'App\\Controllers\\ApiController@photos', 'photos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
 ));
 
 $match = $router->match();
 
+
+
 if (!$match) { 
-    throw new Exception('Page non trouvée');
+    try {
+    } catch(Exception $e) {
+        echo $e->getMessage();
+    }
 } else {
     list($controller, $action) = explode('@', $match['target']);
     $controller = new $controller;
@@ -41,5 +48,4 @@ if (!$match) {
         // Throw an exception in debug, send a 500 error in production
     }
 }
-
 ?>
