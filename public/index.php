@@ -8,13 +8,13 @@ $router = new AltoRouter();
 
 // Page d'accueil et déconnexion
 $router->addRoutes(array(
-    array('GET', '/', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/se-reperer', 'App\\Controllers\\FindController@index', 'se-reperer'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/decouvrir', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/decouvrir/galerie', 'App\\Controllers\\DiscoverController@gallery', 'galerie'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/a-propos', 'App\\Controllers\\AboutController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
-    array('GET', '/cgu', 'App\\Controllers\\HomeController@cgu', 'cgu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/', 'App\\Controllers\\HomeController@index', 'fezf'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]', 'App\\Controllers\\HomeController@lang', 'switchLang'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[accueil|homepage]', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[decouvrir|discover]', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[decouvrir|discover]/[galerie|gallery]', 'App\\Controllers\\DiscoverController@gallery', 'galerie'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[a-propos|about]', 'App\\Controllers\\AboutController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[cgu|terms-of-use]', 'App\\Controllers\\HomeController@cgu', 'cgu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/lieux/[i:id]', 'App\\Controllers\\ApiController@lieuxByType', 'lieuxByType'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/contact', 'App\\Controllers\\ContactController@index', 'contact'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/contact/send', 'App\\Controllers\\ContactController@send', 'checkEmail'), // affichage de la page d'accueil ou de la page de connexion si non connecté
@@ -26,16 +26,13 @@ $router->addRoutes(array(
 
 $match = $router->match();
 
-
-
 if (!$match) { 
-    try {
-    } catch(Exception $e) {
-        echo $e->getMessage();
-    }
+    header('HTTP/1.0 404 Not Found', true, 404);
 } else {
     list($controller, $action) = explode('@', $match['target']);
-    $controller = new $controller;
+    $lang = array_key_exists('lang', $match['params']) ? $match['params']['lang'] : $session->get('lang');
+    
+    $controller = new $controller($lang);
     if (is_callable(array($controller, $action))) {
         try {
             call_user_func_array(array($controller, $action), array($match['params']));

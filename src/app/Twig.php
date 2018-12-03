@@ -16,8 +16,9 @@ class Twig
     /**
      * Instanciation de l'objet Twig
      */
-    public function __construct()
+    public function __construct(string $lang = 'fr')
     {
+        $this->lang = $lang;
         $this->session = new SessionManager;
         $this->_loader = new \Twig_Loader_Filesystem('../src/templates');
 		$this->_twig = new \Twig_Environment($this->_loader, array(
@@ -26,7 +27,8 @@ class Twig
         ));
         $this->_twig->addExtension(new \Twig_Extension_Debug());
         $this->_twig->addGlobal('session', $this->session->get());
-        $this->_twig->addGlobal('trad', $this->getTrad());
+        $this->_twig->addGlobal('trad', $this->getTrad($lang));
+        $this->_twig->addGlobal('lang', $this->lang);
         $this->_twig->addGlobal('domain', $_SERVER['HTTP_HOST']);
 		return $this->_twig;
     }
@@ -49,7 +51,7 @@ class Twig
 
     private function getTrad()
     {
-        return Yaml::parseFile('../src/trads/'.$this->session->get('lang').'.yaml');
+        return Yaml::parseFile('../src/trads/'.$this->lang.'.yaml');
     }
 }
 

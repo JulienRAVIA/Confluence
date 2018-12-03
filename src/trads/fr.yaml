@@ -1,10 +1,21 @@
+lang: fr
+
 header:
-  home: Accueil
-  find: Se repérer
-  discover: Découvrir
-  about: A propos du quartier
+  home: 
+    title: Accueil
+    url: accueil
+  find: 
+    title: Se repérer
+    url: se-reperer
+  discover: 
+    title: Découvrir
+    url: decouvrir
+  about: 
+    title: A propos du quartier
+    url: a-propos
   lang: EN
-  accessbility: Mode accessible
+  accessibility: 
+    title: Mode accessible
 
 home:
   title: Accueil
@@ -25,6 +36,9 @@ body:
 footer:
   contact: Nous contacter
   follow: Nous suivre sur
+  cgu: 
+    title: CGU
+    url: cgu
 
 cgu: Conditions Générales d'Utilisation
 

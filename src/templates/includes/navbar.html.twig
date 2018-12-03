@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">{{ trad.header.home }}</a>
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.home.url }}">{{ trad.header.home.title }}</a>
         </li>
         {# <li class="nav-item">
           <a class="nav-link" href="/se-reperer">{{ trad.header.find }}</a>
         </li> #}
         <li class="nav-item">
-          <a class="nav-link" href="/decouvrir">{{ trad.header.discover }}</a>
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/a-propos">{{ trad.header.about }}</a>
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/{{ trad.header.lang|lower }}">| {{ trad.header.lang}}</a>

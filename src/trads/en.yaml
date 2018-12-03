@@ -1,10 +1,16 @@
 header:
-  home: Home
-  find: Find your way
-  discover: Discover
-  about: About the district
-  lang: FR
-  accessbility: Accessibility mode
+  home: 
+    title: Home
+    url: homepage
+  discover: 
+    title: Discover
+    url: discover
+  about: 
+    title: About the district
+    url: about
+  lang: EN
+  accessibility: 
+    title: Accessibility mode
 
 home:
   title: Accueil
@@ -25,7 +31,9 @@ about:
 footer:
   contact: Contact us
   follow: Follow us on
-  cgu: Terms of Use
+  cgu: 
+    title: Terms of Use
+    url: terms-of-use
 
 cgu: 
   title: Terms of Use

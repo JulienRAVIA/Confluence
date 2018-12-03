@@ -16,11 +16,11 @@ abstract class BaseController
     /**
      * Création des variables de service
      */
-    public function __construct()
+    public function __construct(string $lang = 'fr')
     {
         try {
             $this->db = Database::getInstance();
-            $this->twig     =   new Twig();
+            $this->twig     =   new Twig($lang);
             $this->mailer   =   new PHPMailer();
             $this->session  =   new SessionManager();
         } catch (\Exception $e) {

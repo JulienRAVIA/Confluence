@@ -3,8 +3,8 @@
 
 {% block styles %}
     {{ parent() }}
-    <link rel="stylesheet" href="css/leaflet/leaflet.css">
-    <link rel="stylesheet" href="css/leaflet/leaflet-bootstrapmodal.css">
+    <link rel="stylesheet" href="/css/leaflet/leaflet.css">
+    <link rel="stylesheet" href="/css/leaflet/leaflet-bootstrapmodal.css">
 {% endblock %}
 
 {% block title %}Découvrez le quartier de Confluence{% endblock %}
@@ -44,7 +44,7 @@
     {% for i in 0..2 %}
         <div class="col-md-4">
             <div class="card">
-                <img src="img/photos/musee.jpg" class="lightbox img-fluid">
+                <img src="/img/photos/musee.jpg" class="lightbox img-fluid">
             </div>
         </div>
     {% endfor %}
