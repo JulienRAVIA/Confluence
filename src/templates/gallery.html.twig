@@ -1,5 +1,7 @@
 {% extends 'includes/template.html.twig' %}
 
+{% set page = 'discover' %}
+
 {% block title %}Découvrir{% endblock %}
 
 {% block styles %}
@@ -12,20 +14,13 @@
 {% endblock styles %}
 
 {% block body %}
-    <div class="jumbotron" id="jumbotron-menu" style="background-image: url('img/photos/unbopon.png');">
-        <div class="container">
-            <h4>{{ trad.discover.title }}</h4>
-        </div>
+    <div class="jumbotron" style="background-image: url('/api/photos/Pont.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.discover.title }}</h4>
     </div>
     <div class="container">
-        <div class="row justify-content-end">
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <a href="">
-                        <i class="fa fa-images"></i> {{ trad.discover.gallery }}
-                    </a>
-                </li>
-            </ul>
+        <div class="row justify-content-between mb-4">
+            <h4>Découvrir le quartier en photos...</h4>
+            <a href="../{{ trad.discover.places.url }}" class="btn btn-primary btn-sm"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
         </div>
         <div id="macy-container">
             {% for image in images %}

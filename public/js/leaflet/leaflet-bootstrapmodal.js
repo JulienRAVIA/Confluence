@@ -21,8 +21,6 @@ L.Control.BootstrapModal = L.Control.extend({
         // keep a reference to it for later
         this.modal = $('#' + this.options.modalId );
         if ( ! this.modal.length )                 throw "L.Control.BootstrapModal: could not find #" + this.options.modalId + "in the DOM";
-        if ( this.modal.attr('role') !== 'dialog') throw "L.Control.BootstrapModal: #" + this.options.modalId + " does not have role=\"dialog\"   Are you sure it's a dialog?";
-        if (! this.modal.hasClass('modal') )       throw "L.Control.BootstrapModal: #" + this.options.modalId + " does not have class=\"modal\"   Are you sure it's a dialog?";
     },
     onAdd: function (map) {
         // add a linkage to the map, since we'll be managing map layers
@@ -48,6 +46,6 @@ L.Control.BootstrapModal = L.Control.extend({
     },
 
     handleClick: function () {
-        this.modal.modal('show');
+        this.modal.toggle();
     }
 });

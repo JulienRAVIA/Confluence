@@ -25,6 +25,6 @@ class HomeController extends BaseController
         $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/accueil';
         $this->session->set('lang', $request['lang']);
 
-        header('Location: '.$referer);
+        header('Location: /');
     }
 }

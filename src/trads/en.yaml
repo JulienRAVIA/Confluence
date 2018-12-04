@@ -8,7 +8,7 @@ header:
   about: 
     title: About the district
     url: about
-  lang: EN
+  lang: FR
   accessibility: 
     title: Accessibility mode
 
@@ -20,7 +20,12 @@ home:
 
 discover:
   title: Discover
-  gallery: Gallery
+  gallery: 
+    title: Gallery
+    url: discover/gallery
+  places:
+    title: Places
+    url: discover
 
 about:
   title: About the district

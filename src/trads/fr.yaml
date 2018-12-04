@@ -44,4 +44,9 @@ cgu: Conditions Générales d'Utilisation
 
 discover:
   title: Découvrir
-  gallery: Galerie
+  gallery: 
+    title: Galerie
+    url: decouvrir/galerie
+  places:
+    title: Lieux
+    url: decouvrir

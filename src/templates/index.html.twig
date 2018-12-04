@@ -1,9 +1,11 @@
 {% extends 'includes/template.html.twig' %}
 {% import 'includes/macros.html.twig' as macros %}
 
+{% set page = 'home' %}
+
 {% block styles %}
-    {{ parent() }}
     <link rel="stylesheet" href="/css/leaflet/leaflet.css">
+    {{ parent() }}
     <link rel="stylesheet" href="/css/leaflet/leaflet-bootstrapmodal.css">
 {% endblock %}
 
@@ -11,28 +13,40 @@
 
 {% block body %}
 {# Block principal du site #}
-<div class="jumbotron" id="jumbotron-main">
-    <div class="container">
-        <h1>{{ trad.home.jumbotron.title }}</h1>
-        <p>{{ trad.home.jumbotron.subtitle }}...</p>
-    </div>
-</div>
 
-{# Bloc de texte #}
-<div class="jumbotron mb-0">
+<div class="jumbotron-header" id="jumbotron-main" style="background-image: url('/api/photos/Panorama_musee_confluence.jpg?w=2000');">
     <div class="container">
-        <div class="">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        <div class="jumbotron-title">
+            <h1>{{ trad.home.jumbotron.title }}</h1>
+            <p>{{ trad.home.jumbotron.subtitle }}...</p>
         </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-12">
-        <div id="mapid"></div>
+{# Bloc de texte #}
+<div class="jumbotron">
+    <div class="">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+    </div>
+</div>
+
+<div id="mapid">
+    <!-- panel repères -->
+    <div class="leaflet-top">
+        <div class="card" id="liste" style="margin-left: 10px; margin-top: 200px; padding: 20px; z-index: 2;">
+            <form id="types">
+                {% for type in types %}
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="type{{ type.id }}" value="{{ type.id }}">
+                        <label class="custom-control-label" for="type{{ type.id }}"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</label>
+                    </div>
+                {% endfor %}
+                <button class="btn btn-sm btn-secondary mt-2" data-toggle="check" type="button">Tout cocher</button>
+            </form>
+        </div> 
     </div>
 </div>
 

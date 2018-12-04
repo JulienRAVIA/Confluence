@@ -1,12 +1,12 @@
 {% extends 'includes/template.html.twig' %}
 
+{% set page = 'about' %}
+
 {% block title %}A propos{% endblock %}
 
 {% block body %}
-    <div class="jumbotron" id="jumbotron-menu" style="background-image: url('img/photos/unbopon.png');">
-        <div class="container">
-            <h4>{{ trad.about.title }}</h4>
-        </div>
+    <div class="jumbotron-header" style="background-image: url('/api/photos/Panorama_architecture_confluence.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.about.title }}</h4>
     </div>
     <div class="container">
         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">

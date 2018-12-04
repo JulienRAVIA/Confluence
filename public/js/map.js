@@ -72,8 +72,8 @@ var polygon = L.polygon([
 ]).addTo(map);
     
 new L.Control.BootstrapModal({
-        modalId: 'reperes',
-        tooltip: "Repères",
+    modalId: 'liste',
+    tooltip: "Repères",
     glyph: 'map-signs'
 }).addTo(map);
 
@@ -123,4 +123,10 @@ $('form#types').on('change', function() {
         }
     });
     map.invalidateSize();
+});
+
+$('button[data-toggle="check"]').on('click', function(){
+    $('input:checkbox').attr('checked','checked');
+},function(){
+    $('input:checkbox').removeAttr('checked');
 });
