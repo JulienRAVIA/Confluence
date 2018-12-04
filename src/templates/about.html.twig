@@ -1,0 +1,37 @@
+{% extends 'includes/template.html.twig' %}
+
+{% set page = 'about' %}
+
+{% block title %}A propos{% endblock %}
+
+{% block body %}
+    <div class="jumbotron-header" style="background-image: url('/api/photos/Panorama_architecture_confluence.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.about.title }}</h4>
+    </div>
+    <div class="container">
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="dates-tab" data-toggle="tab" href="#dates" role="tab" aria-controls="dates" aria-selected="true">{{ trad.about.tabs.dates }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chiffres-tab" data-toggle="tab" href="#chiffres" role="tab" aria-controls="chiffres" aria-selected="false">{{ trad.about.tabs.numbers }}</a>
+          </li>
+        </ul>
+        <div class="card border-top-0 rounded-0">
+            <div class="card-body">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="dates" role="tabpanel" aria-labelledby="dates-tab">
+                        <p>djioqijdzdjiozqfjigrjibjizjiefjio</p>
+                    </div>
+                    <div class="tab-pane fade" id="chiffres" role="tabpanel" aria-labelledby="chiffres-tab">
+                        <p>djioqijdzqdqzdzqdzqdzqsdzdjiozqfjigrjibjizjiefjio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+{% endblock %}

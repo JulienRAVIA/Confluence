@@ -1,0 +1,55 @@
+{% extends 'includes/template.html.twig' %}
+
+{% set page = 'discover' %}
+
+{% block title %}Découvrir{% endblock %}
+
+{% block body %}
+    <div class="jumbotron-header" style="background-image: url('/api/photos/Pont.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.discover.title }}</h4>
+    </div>
+    <div class="container">
+        <div class="row justify-content-end">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="{{ trad.discover.gallery.url }}">
+                        <i class="fa fa-images"></i> {{ trad.discover.gallery.title }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <ul class="nav  flex-column">
+                    {% for type in types %}
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-9">
+                {% for lieu in lieux|slice(1, 5) %}
+                    <div class="row">
+                        <div class="col-md-12">
+                        <div class="card">
+                            {# <img class="mr-3" src="img\photos\photo_{{lieu.id}}.jpg" alt="Generic placeholder image" width=10%> #}
+                            <div class="card-body">
+                                <div class="float-right"><a href=""><i class="fa fa-map-marker-alt"></i></a></div>
+
+                                <h5 class="mt-0">{{lieu.nom}}</h5>
+                                {{lieu.description|raw}}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                {% endfor %}  
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/discover.js"></script>
+{% endblock %}

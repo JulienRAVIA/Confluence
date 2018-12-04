@@ -1,0 +1,52 @@
+lang: fr
+
+header:
+  home: 
+    title: Accueil
+    url: accueil
+  find: 
+    title: Se repérer
+    url: se-reperer
+  discover: 
+    title: Découvrir
+    url: decouvrir
+  about: 
+    title: A propos du quartier
+    url: a-propos
+  lang: EN
+  accessibility: 
+    title: Mode accessible
+
+home:
+  title: Accueil
+  jumbotron:
+    title: Bienvenue à Confluence
+    subtitle: Un quartier vivant
+
+about:
+  title: A propos du quartier
+  tabs:
+    dates: En quelques dates
+    numbers: En quelques dates
+
+body:
+  title: Bienvenue à Confluence
+  subtitle: Un quartier vivant
+
+footer:
+  contact: Nous contacter
+  follow: Nous suivre sur
+  cgu: 
+    title: CGU
+    url: cgu
+
+cgu: Conditions Générales d'Utilisation
+
+discover:
+  title: Découvrir
+  gallery: 
+    title: Galerie
+    url: decouvrir/galerie
+  places:
+    title: Lieux
+    url: decouvrir
