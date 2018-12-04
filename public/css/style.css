@@ -85,3 +85,16 @@ footer {
 .custom-control-label {
     padding-top: 3.5px;
 }
+
+li.nav-item:last-child {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+li.nav-item:last-child:hover {
+    background-color: #E8E8E8;
+}
+
+#contactForm {
+    border-style: 1px solid black;
+}
