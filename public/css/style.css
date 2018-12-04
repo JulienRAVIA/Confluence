@@ -80,3 +80,7 @@ footer {
 #last {
     border-right: 1px solid #E8E8E8;
 }
+
+#contactForm {
+    border-style: 1px solid black;
+}
