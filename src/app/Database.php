@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Util\SessionManager;
+
 /**
  * Classe d'accès aux données
  */
@@ -51,6 +53,7 @@ class Database {
         $this->database = getenv('DATABASE_NAME');
         $this->user = getenv('DATABASE_USER');
         $this->password = getenv('DATABASE_PASSWORD');
+        $this->session = new SessionManager;
 
 
         $options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
@@ -90,7 +93,7 @@ class Database {
      */
     public function getTypes()
     {
-        $query = Database::$dbh->query('SELECT * FROM types');
+        $query = Database::$dbh->query('SELECT id, icone, libelle_'.$this->session->get('lang').' as libelle FROM types');
         return $query->fetchAll();
     }
     
@@ -101,7 +104,10 @@ class Database {
      */
     public function getLieux()
     {
-        $query = Database::$dbh->query('SELECT * FROM lieux INNER JOIN types ON lieux.type = types.id');
+        $query = Database::$dbh->prepare('SELECT * FROM lieux INNER JOIN types ON lieux.type = types.id');
+        $query->execute([
+            'description' => 'description_en'
+        ]);
         return $query->fetchAll();
     }
 
@@ -115,8 +121,11 @@ class Database {
      */
     public function getLieuxByType(int $type)
     {
-        $query = Database::$dbh->prepare('SELECT lieux.* FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type');
-        $query->execute(array('type' => 1));
+        $query = Database::$dbh->prepare('SELECT lieux.*, :description as description FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type');
+        $query->execute(array(
+            'type' => 1,
+            'description' => 'description_en'
+        ));
         return $query->fetchAll();
     }
 
@@ -141,7 +150,7 @@ class Database {
      */
     public function getLieuxOnly()
     {
-        $query = Database::$dbh->query('SELECT * FROM lieux');
+        $query = Database::$dbh->query('SELECT nom, gps, description_'.$this->session->get('lang').' as description FROM lieux');
         return $query->fetchAll();
     }
 

@@ -6,23 +6,27 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+        <li class="nav-item {{ (page == 'home') ? 'active' : '' }}">
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.home.url }}">{{ trad.header.home.title }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/se-reperer">Se repérer</a>
+        <li class="nav-item {{ (page == 'discover') ? 'active' : '' }}">
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/a-propos">A propos</a>
-        </li>
+<<<<<<< HEAD
         <li class="nav-item" id="last">
           <a class="nav-link" href="/decouvrir">Découvrir</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">EN</a>
+=======
+        <li class="nav-item {{ (page == 'about') ? 'active' : '' }}">
+          <a class="nav-link" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/{{ trad.header.lang|lower }}">{{ trad.header.lang}}</a>
+>>>>>>> cf66a15e856863aa186e3a6119b8e32ba4fbefc9
         </li>
       </ul>
     </div>
