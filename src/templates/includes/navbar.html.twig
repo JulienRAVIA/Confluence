@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  
+  <img src="/img/photos/logo.png" style="max-width: 80px;">
   <div class="container">
-    <img src="./img/photos/favicon.png" style="max-width: 80px;">
     <a class="navbar-brand" href="/">Confluence</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,19 +13,11 @@
         <li class="nav-item {{ (page == 'discover') ? 'active' : '' }}">
           <a class="nav-link" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
         </li>
-<<<<<<< HEAD
-        <li class="nav-item" id="last">
-          <a class="nav-link" href="/decouvrir">Découvrir</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">EN</a>
-=======
         <li class="nav-item {{ (page == 'about') ? 'active' : '' }}">
           <a class="nav-link" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/{{ trad.header.lang|lower }}">{{ trad.header.lang}}</a>
->>>>>>> cf66a15e856863aa186e3a6119b8e32ba4fbefc9
         </li>
       </ul>
     </div>
