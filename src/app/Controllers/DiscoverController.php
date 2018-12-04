@@ -19,7 +19,7 @@ class DiscoverController extends BaseController
         $types = $this->db->getTypes();
         $lieux = $this->db->getLieuxOnly();
 
-        return $this->render('decouvrir.html.twig', compact('lieux','types'));
+        return $this->render('discover.html.twig', compact('lieux','types'));
     }
 
     public function gallery()

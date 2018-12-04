@@ -23,10 +23,20 @@ footer a {
     color: white;
 } 
 
+.jumbotron-header {
+    padding: 200px; 
+    background-position: center; 
+    background-size: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
 .jumbotron-header .jumbotron-title {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
     padding: 10px;
     border: 2px solid white;
+    color: white;
+    text-align: center;
 }
 
 .jumbotron-header .jumbotron-title > h1,
@@ -61,22 +71,6 @@ footer {
     width: 100%;
 }
 
-.jumbotron-header {
-    padding: 200px; 
-    background-position: center; 
-    background-size: cover;
-    border-radius: 0;
-    margin-bottom: 0;
-}
-
-.jumbotron-header > .jumbotron-title
-{
-    background-color: rgba(0, 0, 0, 0.4); 
-    padding: 10px;
-    border: 2px solid white;
-    color: white;
-    text-align: center;
-}
 
 .leaflet-top, .leaflet-bottom {
     pointer-events: all;
