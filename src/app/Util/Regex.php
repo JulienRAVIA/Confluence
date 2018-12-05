@@ -9,10 +9,16 @@ class Regex
      */
     private $pattern;
 
+    const PATTERN_EMAIL = '/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/';
+
+    const PATTERN_TEXT = '/^[a-zA-Z]+$/';
+
+    const PATTERN_NUMBER = '/^[0-9]+$/';
+
     /**
      * @param string $pattern
      */
-    public function __construct(string $pattern)
+    public function __construct($pattern)
     {
         $this->pattern = $pattern;
     }

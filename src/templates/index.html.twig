@@ -4,6 +4,8 @@
 {% block styles %}
     {{ parent() }}
     <link rel="stylesheet" href="css/lity/lity.min.css" />
+    <link rel="stylesheet" href="css/leaflet/leaflet.css">
+    <link rel="stylesheet" href="css/leaflet/leaflet-bootstrapmodal.css">
 {% endblock %}
 
 {% block title %}Découvrez le quartier de Confluence{% endblock %}
@@ -18,7 +20,7 @@
 </div>
 
 {# Bloc de texte #}
-<div class="jumbotron">
+<div class="jumbotron mb-0">
     <div class="container">
         <div class="">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
@@ -28,6 +30,14 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="mapid"></div>
+    </div>
+</div>
+
+{% include 'includes/reperes.html.twig' with types %}
 
 <div class="container">
     <div class="row">
@@ -50,4 +60,8 @@
     <script>
         $('img.lightbox').on('click', lity);
     </script>
+    <script src="/js/leaflet/leaflet.js"></script>
+    <script src="/js/leaflet/leaflet-providers.js"></script>
+    <script src="/js/leaflet/leaflet-bootstrapmodal.js"></script>
+    <script src="/js/map.js"></script>
 {% endblock %}

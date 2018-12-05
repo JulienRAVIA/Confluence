@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 .navbar {
     /* ajoute une bordure  */
@@ -17,11 +17,13 @@ footer a {
     color: white;
 } 
 
+
 #jumbotron-main {
-    background-image: url('https://culturebox.francetvinfo.fr/sites/default/files/assets/images/2014/12/000_par8031448.jpg');
+    background-image: url('https://image.noelshack.com/fichiers/2018/45/4/1541703280-musee-confluence-2.png');
     background-repeat: no-repeat;
-    background-attachment: fixed;
+   /* background-attachment: fixed;*/
     background-position: center; 
+    background-size: 100%;
     height: 100%;
     padding: 15rem;
     margin-bottom: 0;
@@ -32,8 +34,8 @@ footer a {
 {
     color: white;
     text-align: center;
-    text-shadow: -2px 0px 30px rgba(161, 150, 149, 1);
-    font-family: 'Pacifico', cursive;
+    text-shadow: -2px 0px 5px black;
+    font-family: 'Comfortaa', cursive;
 }
 
 
@@ -63,4 +65,13 @@ footer {
 
 #mapid {
     height: 500px;
+}
+
+#cgu {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.nav-tabs {
+    width: 100%;
 }

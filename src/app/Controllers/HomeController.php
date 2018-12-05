@@ -12,9 +12,11 @@ class HomeController extends BaseController
      */
     public function index() {
         $types = $this->db->getTypes();
-
-        // $weather = new \App\OpenWeather('Paris', 'fr');
-        // $weather->dump();
+        
         echo $this->render('index.html.twig', compact('types'));
+    }
+
+    public function cgu() {
+    	echo $this->render('cgu.html.twig');
     }
 }
