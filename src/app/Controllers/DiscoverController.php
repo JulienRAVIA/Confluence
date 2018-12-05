@@ -14,12 +14,15 @@ class DiscoverController extends BaseController
     /**
      * Affiche la page "Découvrir"
      */
-    public function index()
+    public function index($request)
     {
-        $types = $this->db->getTypes();
-        $lieux = $this->db->getLieuxOnly();
+        $type_active = (isset($request['id'])) ? $request['id'] : 1;
 
-        return $this->render('discover.html.twig', compact('lieux','types'));
+        $types = $this->db->getTypes();
+        $lieux = $this->db->getLieuxByType($type_active);
+        $detail_type = $this->db->getType($type_active);
+
+        return $this->render('discover.html.twig', compact('lieux','types', 'detail_type', 'type_active'));
     }
 
     public function gallery()
