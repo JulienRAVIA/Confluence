@@ -1,4 +1,4 @@
-{% extends 'includes/template.html.twig' %}
+{% extends 'includes/template.html.twig'%}
 
 {% block title %}A propos{% endblock %}
 
@@ -19,15 +19,68 @@
         </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="dates" role="tabpanel" aria-labelledby="dates-tab">
-            <p>djioqijdzdjiozqfjigrjibjizjiefjio</p>
+           
         </div>
-        <div class="tab-pane fade" id="chiffres" role="tabpanel" aria-labelledby="chiffres-tab">
-            <p>djioqijdzqdqzdzqdzqdzqsdzdjiozqfjigrjibjizjiefjio</p>
+        <div class="tab-pane fade" id="chiffres" role="tabpanel" aria-labelledby="chiffres-tab">  
+            
+            <div class="container">
+              <div class="d-flex bd-highlight row" style="padding-top: 10%;">
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center; text-color : blue;">
+                  <h4 onClick="hide('150')" >150</h4>
+                  <div id="150" style="display : none"><p> C'est le nombre d'hectares sur lesquels s’étend tout le quartier de Confluence.</p> </div>
+                </div>
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onClick="hide('4989')">4989</h4>
+                  <div id="4989" style="display : none"><p>Nombre de logements construits dans tout le quartier, aussi bien privés que publiques</p> </div>
+                </div>
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onClick="hide('1,2')">1,2</h4>
+                  <div id="1,2" style="display : none"><p> D’argent investit dans le projet, et celui-ci n’est pas encore terminé !</p></div>
+                </div>
+              </div>
+              <div class="d-flex bd-highlight row" style="padding-top: 10%;">
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onclick="hide('860')">860</h4>
+                  <div id="860" style="display : none"><p> Les entreprises sont de plus en plus nombreuses à revenir dans le quartier dont la population grandit sans cesse. Aujourd’hui 860 entreprises ont déjà y sont déjà installées. </p> </div>
+                </div>
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onclick="hide('10000')">10 000</h4>
+                  <div id="10000" style="display : none"><p> Plus de 10 000 personnes habite désormais Confluence,  et le nombre est appelé a augmenté puisque c’est plus de 16 000 qui sont attendus d’ici 2025.</p> </div>
+                </div>
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onclick="hide('15000')">15 000</h4>
+                  <div id="15000" style="display : none"><p> Avec les entreprises viennent évidement les employés ;<br> ils sont plus de 15 000 à avoir trouvé du travail dans le quartier.  </p> </div>
+                </div>
+              </div>
+              <div class="d-flex bd-highlight row" style="padding-top: 10%;">
+                <div class="p-2 flex-fill bd-highlight" style="flex-basis : 0% !important; text-align:center">
+                  <h4 onclick="hide('5,5')" >5,5</h4>
+                  <div id="5,5" style="display : none"><p>  Le quartier s’agrandi aussi bien avec l’urbanisation qu’avec la présence de nouvel espaces vert. Plus de 5 hectares vont venir s’ajouté au quartier déjà bien vert. </p> </div>
+                </div>
+              </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 {% block scripts %}
     {{ parent() }}
+    <script type="text/javascript">
+        function hide(id)
+            {
+                var elem = document.getElementById(id);
+                console.log(elem);
+                if (elem.style.display === "none") {
+                    elem.style.display = "block";
+                } else {
+                    elem.style.display = "none";
+                }
+                
+                console.log(elem);
+            }
+    </script>
 {% endblock %}
