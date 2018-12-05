@@ -8,7 +8,7 @@ L.Control.BootstrapModal = L.Control.extend({
         // modalId          the DOM ID of the Bootstrap modal, without the # sign. Example: **help**, would connect to the modal with **id="help"**
         // tooltip          the tooltip text for the control
         // glyph            the name of a Bootstrap glyphicon, minus the glyphicon- prefix. Example: **flag**  For more info and full list, http://getbootstrap.com/components/#glyphicons
-        position: 'topleft',
+        position: 'topright',
         modalId: null,
         tooltip: "",
         glyph: 'info-sign'
