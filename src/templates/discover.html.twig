@@ -22,32 +22,38 @@
             <div class="col-3">
                 <ul class="nav  flex-column">
                     {% for type in types %}
-                        <li class="nav-item">
-                          <a class="nav-link active" href="#"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</a>
+                        <li class="nav-item {{ (type_active == type.id) ? 'active' : ''}}">
+                            <a class="nav-link" href="/{{ lang }}/{{ trad.discover.places.url}}/{{ type.id }}"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
             <div class="col-9">
+            <h5>{{ detail_type.libelle }}</h5>
                 {% for lieu in lieux|slice(1, 5) %}
-                    <div class="row">
-                        <div class="col-md-12">
-                        <div class="card">
+                        <div class="card mb-2">
                             {# <img class="mr-3" src="img\photos\photo_{{lieu.id}}.jpg" alt="Generic placeholder image" width=10%> #}
                             <div class="card-body">
-                                <div class="float-right"><a href=""><i class="fa fa-map-marker-alt"></i></a></div>
+                                {# <div class="float-right"><a href=""><i class="fa fa-map-marker-alt"></i></a></div> #}
+                                <div class="media">
+                                    {% if lieu.image is not null %}
+                                    <img src="/api/photos/{{ lieu.image }}?w=100" alt="{{ lieu.nom }}" class="mr-2">
+                                    {% endif %}
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ lieu.nom }}</h5>
 
-                                <h5 class="mt-0">{{lieu.nom}}</h5>
-                                {{lieu.description|raw}}
+                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="show" data-place="{{ lieu.id}}">{{ trad.discover.places.read }}</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
                 {% endfor %}  
             </div>
         </div>
     </div>
+{% include 'includes/place.html.twig' %}
 {% endblock %}
+
 
 {% block scripts %}
     {{ parent() }}

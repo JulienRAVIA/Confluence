@@ -27,7 +27,9 @@ about:
   title: A propos du quartier
   tabs:
     dates: En quelques dates
-    numbers: En quelques dates
+    numbers: En quelques chiffres
+  timeline: 1R7_Z9zX1XW5qEZIhcjpYsZvP-T2W19vEW-mauYlhlzE
+
 
 body:
   title: Bienvenue à Confluence
@@ -40,13 +42,18 @@ footer:
     title: CGU
     url: cgu
 
-cgu: Conditions Générales d'Utilisation
+cgu: 
+  title: Conditions générales d'utilisation
+  nav: CGU
 
 discover:
   title: Découvrir
   gallery: 
     title: Galerie
     url: decouvrir/galerie
+    subtitle: Découvrez le quartier en photos..
   places:
     title: Lieux
     url: decouvrir
+    read: En savoir plus..
+

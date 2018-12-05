@@ -28,7 +28,7 @@ footer a {
     background-position: center; 
     background-size: cover;
     border-radius: 0;
-    margin-bottom: 0;
+    margin-bottom: 1em;
 }
 
 .jumbotron-header .jumbotron-title {
@@ -80,12 +80,12 @@ footer {
     padding-top: 3.5px;
 }
 
-li.nav-item:last-child {
+.navbar li.nav-item:last-child {
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-li.nav-item:last-child:hover {
+.navbar li.nav-item:last-child:hover {
     background-color: #E8E8E8;
 }
 

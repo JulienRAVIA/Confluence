@@ -46,6 +46,23 @@ class ApiController extends BaseController
         echo json_encode($types);
     }
 
+    /**
+     * Retourne réponse JSON avec tous les types de lieux
+     *
+     * @method GET|POST
+     */
+    public function lieu($request)
+    {
+        $id = $request['id'];
+        $lieu = $this->db->getLieu($id);
+
+        if($lieu) {
+            echo json_encode(['code' => 'success', 'data' => $lieu]);
+        } else {
+            echo json_encode(['code' => 'error']);
+        }
+    }
+
     public function photos($request)
     {
         $path = $request['path'];
