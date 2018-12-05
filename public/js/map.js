@@ -152,3 +152,4 @@ L.control.watermark = function(opts) {
 }
 
 L.control.watermark({ position: 'bottomright' }).addTo(map);
+

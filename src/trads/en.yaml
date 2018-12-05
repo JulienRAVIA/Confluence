@@ -10,7 +10,7 @@ header:
     url: about
   lang: FR
   accessibility: 
-    title: Accessibility mode
+    title: Dyslexic Mode
 
 home:
   title: Accueil

@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="/css/lity/lity.min.css" />
     {% endblock %}
 </head>
-<body>
+<body id="body">
     {% include 'includes/navbar.html.twig' %}
 
     {% block body %}
@@ -33,6 +33,17 @@
         <script src="/js/bootstrap/bootstrap.min.js"></script>
         <script src="/js/contact.js"></script>
         <script src="/js/sweetalert.min.js"></script>
+        <script>
+        var p = document.getElementById("body");
+        
+        $('button[data-toggle="accessibility"]').on('click', function() {
+          if(p.style.fontFamily == 'OpenDyslexic') {
+            p.style.fontFamily = 'Open Sans';
+          } else {
+            p.style.fontFamily = 'OpenDyslexic';
+          }
+        });
+        </script>
     {% endblock %}
 </body>
 </html>

@@ -1,4 +1,11 @@
+@import url('https://cdn.clarkhacks.com/OpenDyslexic/v1/OpenDyslexic.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 @import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+body {
+    font-family: 'Open Sans', cursive;
+}
 
 .navbar {
     /* ajoute une bordure  */
@@ -89,5 +96,5 @@ li.nav-item:last-child:hover {
 }
 
 #contactForm {
-    border-style: 1px solid black;
+    border: 1px solid whitex;
 }
