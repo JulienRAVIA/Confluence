@@ -35,6 +35,22 @@ about:
     dates: In few dates
     numbers: In few numbers
   timeline: 1ufN0w3a9bLOJ16S0bnVC4ztVLO_OMcJn8u23UR-U_74
+  datas:
+    - title: 150 hectares
+      description: Amount of hectare that the whole district is covering.
+    - title: 4 989
+      description: Number of apartments in the district.
+    - title: 1.2 billion €
+      description: Amount, in euros, invest in the project and it is yet to be finish!
+    - title: 10 000
+      description: More than 10 000 inhabitants joined Confluence already, and it should grow as more than 16 000 are to be expected until 2025.
+    - title: 860
+      description: More and more companies are willing to come back to the district as it population is endlessly growing. Nowadays it’s more than 860 companies that are already settle. 
+    - title: 15 000
+      description: With the companies, came, indeed, the workers: they are now more than 15 000 to have been hired in the district.
+    - title: 5.5
+      description: The district is growing by both urbanisation but also by the creation of new natural places. More than 5 hectares will be adds to this already so green district.
+        
 
 footer:
   contact: Contact us

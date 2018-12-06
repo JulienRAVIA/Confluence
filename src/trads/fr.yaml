@@ -29,7 +29,21 @@ about:
     dates: En quelques dates
     numbers: En quelques chiffres
   timeline: 1R7_Z9zX1XW5qEZIhcjpYsZvP-T2W19vEW-mauYlhlzE
-
+  datas:
+    - title: 150 hectares
+      description: C'est le nombre d'hectares sur lesquels s’étend tout le quartier de Confluence. 
+    - title: 4 989
+      description: Nombre de logements construits dans tout le quartier, aussi bien privés que publiques.
+    - title: 1.2 milliard €
+      description: D’argent investit dans le projet, et celui-ci n’est pas encore terminé !
+    - title: 10 000
+      description: Plus de 10 000 personnes habite désormais Confluence, et le nombre est appelé a augmenté puisque c’est plus de 16 000 qui sont attendus d’ici 2025.
+    - title: 860
+      description: Les entreprises sont de plus en plus nombreuses à revenir dans le quartier dont la population grandit sans cesse. Aujourd’hui 860 entreprises ont déjà y sont déjà installées. 
+    - title: 15 000
+      description: Avec les entreprises viennent évidement les employés ; ils sont plus de 15 000 à avoir trouvé du travail dans le quartier.  
+    - title: 5.5
+      description: Le quartier s’agrandi aussi bien avec l’urbanisation qu’avec la présence de nouvel espaces vert. Plus de 5 hectares vont venir s’ajouté au quartier déjà bien vert.
 
 body:
   title: Bienvenue à Confluence
