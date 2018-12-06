@@ -23,6 +23,7 @@ $router->addRoutes(array(
     array('POST','/api/lieux/[i:id]', 'App\\Controllers\\ApiController@lieu', 'lieu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/api/types', 'App\\Controllers\\ApiController@types', 'types'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/weather', 'App\\Controllers\\ApiController@weather', 'weather'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET','/api/auto', 'App\\Controllers\\ApiController@stationsAuto', 'stationsAuto'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/photos/[*:path]', 'App\\Controllers\\ApiController@photos', 'photos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
 ));
 

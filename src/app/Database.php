@@ -117,7 +117,7 @@ class Database {
      */
     public function getLieux()
     {
-        $query = Database::$dbh->query('SELECT lieux.nom, gps, description_'.$this->session->get('lang').' as description, image FROM lieux INNER JOIN types ON lieux.type = types.id');
+        $query = Database::$dbh->query('SELECT lieux.nom, gps, description_'.$this->session->get('lang').' as description, image, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id');
         return $query->fetchAll();
     }
 
@@ -143,7 +143,7 @@ class Database {
      */
     public function getLieuxByType(int $type)
     {
-        $query = Database::$dbh->prepare('SELECT lieux.id, lieux.nom, gps, description_'.$this->session->get('lang').', image FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type');
+        $query = Database::$dbh->prepare('SELECT lieux.id, lieux.nom, gps, description_'.$this->session->get('lang').' as description, image, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type ORDER BY image DESC, nom');
         $query->execute(array('type' => $type));
         return $query->fetchAll();
     }
@@ -173,4 +173,10 @@ class Database {
         return $query->fetchAll();
     }
 
+    public function addLieu(int $type, string $nom, string $description_fr, string $description_en, string $gps, ?string $image)
+    {
+        $query = Database::$dbh->prepare('INSERT INTO lieux(nom, type, description_fr, description_en, gps, image)
+                                        VALUES(:nom, :type, :description_fr, :description_en, :gps, :image)');
+        return $query->execute(compact('nom', 'type', 'description_fr', 'description_en', 'gps', 'image'));
+    }
 }

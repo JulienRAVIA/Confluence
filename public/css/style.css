@@ -6,6 +6,7 @@
     -moz-box-shadow: 0 8px 6px -6px #999;
     box-shadow: 0 8px 6px -6px #999;
     padding: 0 2rem;
+    /* background-color: #E8E8E8; */
 }
 
 .jumbotron {
@@ -17,6 +18,14 @@
 footer p {
     margin: 0;
     padding: 0;
+}
+
+footer .row {
+    padding-top: 10px;
+}
+
+footer {
+    padding-top: 10px;
 }
 
 footer a {
@@ -53,6 +62,10 @@ footer a {
     margin-bottom: 0;
 }
 
+#jumbotron-homepage {
+    padding: 300px;
+}
+
 footer {
     color: white;
     margin-top: 5px;
@@ -80,15 +93,44 @@ footer {
     padding-top: 3.5px;
 }
 
-.navbar li.nav-item:last-child {
+ul.navbar-nav > li.nav-item:last-child {
     border-left: 1px solid rgba(0, 0, 0, 0.2);
     border-right: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.navbar li.nav-item:last-child:hover {
+ul.navbar-nav > li.nav-item:last-child:hover {
     background-color: #E8E8E8;
+}
+
+.navbar-nav > .nav-item > .nav-link.active {
+    background-color: #7DC6DF;
+    color: white;
 }
 
 #contactForm {
     border-style: 1px solid black;
+}
+
+ul#networks > li > a:hover {
+    color: black;
+}
+
+button#contactButton:hover {
+    background-color: white;
+    color: black;
+}
+
+ul.nav#types > li.nav-item > a.nav-link.active {
+    background-color: #7DC6DF;
+    color: white;
+}
+
+ul.nav#types > li.nav-item > a.nav-link:hover:not(.active) {
+    background-color: #78C2AD;
+    color: white;
+}
+
+.navbar-nav li.nav-item > a.nav-link:hover:not(.active),
+.navbar-nav li.nav-item > a.nav-link:focus:not(.active){
+    color: #78C2AD;
 }
