@@ -12,6 +12,7 @@ $router->addRoutes(array(
     array('GET', '/[fr|en:lang]', 'App\\Controllers\\HomeController@lang', 'switchLang'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[accueil|homepage]', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[decouvrir|discover]', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/[fr|en:lang]/[decouvrir|discover]/[i:id]', 'App\\Controllers\\DiscoverController@index', 'decouvrir_lieu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[decouvrir|discover]/[galerie|gallery]', 'App\\Controllers\\DiscoverController@gallery', 'galerie'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[a-propos|about]', 'App\\Controllers\\AboutController@index', 'a-propos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[cgu|terms-of-use]', 'App\\Controllers\\HomeController@cgu', 'cgu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
@@ -19,8 +20,10 @@ $router->addRoutes(array(
     array('GET','/contact', 'App\\Controllers\\ContactController@index', 'contact'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/contact/send', 'App\\Controllers\\ContactController@send', 'checkEmail'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/api/lieux', 'App\\Controllers\\ApiController@lieuxByTypes', 'lieuxByTypes'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('POST','/api/lieux/[i:id]', 'App\\Controllers\\ApiController@lieu', 'lieu'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('POST','/api/types', 'App\\Controllers\\ApiController@types', 'types'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/weather', 'App\\Controllers\\ApiController@weather', 'weather'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET','/api/auto', 'App\\Controllers\\ApiController@stationsAuto', 'stationsAuto'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET','/api/photos/[*:path]', 'App\\Controllers\\ApiController@photos', 'photos'), // affichage de la page d'accueil ou de la page de connexion si non connecté
 ));
 

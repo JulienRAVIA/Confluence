@@ -14,7 +14,7 @@
 {% block body %}
 {# Block principal du site #}
 
-<div class="jumbotron-header" id="jumbotron-main" style="background-image: url('/api/photos/Panorama_musee_confluence.jpg?w=2000');">
+<div class="jumbotron-header mb-0" id="jumbotron-homepage" style="background-image: url('http://fat.gfycat.com/NaughtyFrayedAplomadofalcon.gif');">
     <div class="container">
         <div class="jumbotron-title">
             <h1>{{ trad.home.jumbotron.title }}</h1>
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div id="mapid">
+<div id="mapid" class="mb-2">
     <!-- panel repères -->
     <div class="leaflet-top">
         <div class="card" id="liste" style="margin-left: 10px; margin-top: 200px; padding: 20px; z-index: 2;">
@@ -44,7 +44,6 @@
                         <label class="custom-control-label" for="type{{ type.id }}"><i class="fa fa-{{ type.icone }}"></i> {{ type.libelle }}</label>
                     </div>
                 {% endfor %}
-                <button class="btn btn-sm btn-secondary mt-2" data-toggle="check" type="button">Tout cocher</button>
             </form>
         </div> 
     </div>
@@ -52,12 +51,10 @@
 
 <div class="container">
     <div class="row">
-    {% set images = ["", "", ""] %}
-    {% for i in 0..2 %}
+    {% set images = ["Quai.jpg", "Musee_Confluence.jpg", "Novotel.jpg"] %}
+    {% for image in images %}
         <div class="col-md-4">
-            <div class="card">
-                <img src="/img/photos/musee.jpg" class="lightbox img-fluid">
-            </div>
+                <img src="/img/photos/{{ image }}?w=300" class="lightbox img-fluid" style="max-width: 300px;">
         </div>
     {% endfor %}
     </div>

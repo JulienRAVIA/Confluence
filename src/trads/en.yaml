@@ -23,15 +23,18 @@ discover:
   gallery: 
     title: Gallery
     url: discover/gallery
+    subtitle: Take a peek of district by pictures
   places:
     title: Places
     url: discover
+    read: Read information about this place.. 
 
 about:
   title: About the district
   tabs:
     dates: In few dates
     numbers: In few numbers
+  timeline: 1ufN0w3a9bLOJ16S0bnVC4ztVLO_OMcJn8u23UR-U_74
 
 footer:
   contact: Contact us

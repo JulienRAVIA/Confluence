@@ -5,6 +5,9 @@ namespace App\Controllers;
 use Cocur\Slugify\Slugify;
 use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local;
+use Intervention\Image\ImageManager;
+
+// create an image manager instance with favored driver
 
 /**
  * DiscoverController
@@ -14,20 +17,26 @@ class DiscoverController extends BaseController
     /**
      * Affiche la page "Découvrir"
      */
-    public function index()
+    public function index($request)
     {
-        $types = $this->db->getTypes();
-        $lieux = $this->db->getLieuxOnly();
+        $type_active = (isset($request['id'])) ? $request['id'] : 1;
 
-        return $this->render('discover.html.twig', compact('lieux','types'));
+        $types = $this->db->getTypes();
+        $lieux = $this->db->getLieuxByType($type_active);
+        $detail_type = $this->db->getType($type_active);
+
+        return $this->render('discover.html.twig', compact('lieux','types', 'detail_type', 'type_active'));
     }
 
     public function gallery()
     {
-        $adapter = new Local(__DIR__.'/../../../public/img/photos');
+        $dir = __DIR__.'/../../../public/img/photos';
+        $adapter = new Local($dir);
         $filesystem = new Filesystem($adapter);
+
         $files = $filesystem->listContents('/', true);
         $slugify = new Slugify();
+        $manager = new ImageManager(array('driver' => 'gd'));
         
         $images = [];
         $extensions = ['jpg', 'png', 'gif'];
@@ -36,19 +45,25 @@ class DiscoverController extends BaseController
         {
             if(array_key_exists('extension', $file) && in_array($file['extension'], $extensions))
             {
-                $images[] = $file['basename'];
-                // $slug = $slugify->slugify(ucwords($file['filename']), [
-                //     'separator' => '_',
-                //     'lowercase' => false
-                // ]);
-                // $filePath = $slug.'.'.$file['extension'];
-                // $images[] = $filePath;
+                $slug = $slugify->slugify(ucwords($file['filename']), [
+                    'separator' => '_',
+                    'lowercase' => false
+                ]);
+                $size = $filesystem->getSize($file['basename']);
                 
-                // if($file['basename'] != $filePath && !$filesystem->has($filePath)) {
-                //     if($filesystem->rename($file['basename'], $filePath)) {
-                //         echo 'renamed';
-                //     }
-                // }
+                $filePath = $slug.'.'.$file['extension'];
+                if($file['basename'] != $filePath && !$filesystem->has($filePath)) {
+                    if($filesystem->rename($file['basename'], $filePath)) {
+                        $fileSystem->delete($file['basename']);
+                    }
+                }
+                
+                if($size >= 4000000) {
+                    $img = $manager->make($dir.'/'.$file['basename'])->encode('jpg', 75);
+                    $img->save($dir.'/'.$filePath);
+                }
+                
+                $images[] = $filePath;
             } 
         }
         shuffle($images);

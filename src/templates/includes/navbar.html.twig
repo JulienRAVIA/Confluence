@@ -8,14 +8,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item {{ (page == 'home') ? 'active' : '' }}">
-          <a class="nav-link" href="/{{ lang }}/{{ trad.header.home.url }}">{{ trad.header.home.title }}</a>
+        <li class="nav-item">
+          <a class="nav-link {{ (page == 'home') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.home.url }}">{{ trad.header.home.title }}</a>
         </li>
-        <li class="nav-item {{ (page == 'discover') ? 'active' : '' }}">
-          <a class="nav-link" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
+        <li class="nav-item">
+          <a class="nav-link {{ (page == 'discover') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
         </li>
-        <li class="nav-item {{ (page == 'about') ? 'active' : '' }}">
-          <a class="nav-link" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
+        <li class="nav-item">
+          <a class="nav-link {{ (page == 'about') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/{{ trad.header.lang|lower }}">{{ trad.header.lang}}</a>

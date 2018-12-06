@@ -19,8 +19,8 @@
     </div>
     <div class="container">
         <div class="row justify-content-between mb-4">
-            <h4>Découvrir le quartier en photos...</h4>
-            <a href="../{{ trad.discover.places.url }}" class="btn btn-primary btn-sm"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
+            <h4>{{ trad.discover.gallery.subtitle }}</h4>
+            <a href="../{{ trad.discover.places.url }}" class="btn btn-link"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
         </div>
         <div id="macy-container">
             {% for image in images %}
@@ -46,10 +46,10 @@
             useOwnImageLoader: false,
             debug: true,
             mobileFirst: true,
-            columns: 1,
-            margin: 24,
+            columns: 2,
+            margin: 4,
             breakAt: {
-                1200: 6,
+                1200: 7,
                 940: 5,
                 520: 3,
                 400: 2

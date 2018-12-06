@@ -17,7 +17,12 @@ class HomeController extends BaseController
     }
 
     public function cgu() {
-    	echo $this->render('cgu.html.twig');
+        $lang = $this->session->get('lang');
+        if($lang == 'fr') {
+            echo $this->render('cgu_en.html.twig');
+        } else {
+            echo $this->render('cgu.html.twig');
+        }
     }
 
     public function lang($request)

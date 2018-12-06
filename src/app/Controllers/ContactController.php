@@ -28,6 +28,12 @@ class ContactController extends BaseController
                 'max' => 50,
                 'value' => filter_input(INPUT_POST, 'email_address', FILTER_SANITIZE_STRING)
             ],
+            'email_address_checkup' => [
+                'required' => true,
+                'min' => 1,
+                'max' => 50,
+                'value' => filter_input(INPUT_POST, 'email_address_checkup', FILTER_SANITIZE_STRING)
+            ],
             'message' => [
                 'required' => true,
                 'min' => 10,
@@ -59,7 +65,11 @@ class ContactController extends BaseController
         // On vérifie si chaque champ est correctement renseigné
         foreach ($fields as $key => $field) {
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
-                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error', 'field' => $key));
+                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli', 'code' => 'error', 'field' => $key));
+                return false;
+            }
+            if($key == 'email_address' && $field['value'] != $fields['email_address_checkup']['value']) {
+                echo json_encode(array('message' => 'Les adresses mails doivent correspondre', 'code' => 'error', 'field' => $key));
                 return false;
             }
             if(isset($field['regex'])) {
@@ -123,9 +133,5 @@ class ContactController extends BaseController
     public function isSpam(string $text, int $minLength = 10, int $maxLength = 50)
     {
         return (strlen($text) <= $minLength) || (strlen($text) >= $maxLength);
-    }
-
-    public function isCorrect(string $text) {
-
     }
 }

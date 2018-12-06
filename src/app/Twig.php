@@ -18,12 +18,14 @@ class Twig
      */
     public function __construct(string $lang = 'fr')
     {
+        $debug = (getenv('ENV') == 'DEV') ? true : false;
+        $cache = ($debug) ? false : __DIR__.'/../../cache/twig'; 
         $this->lang = $lang;
         $this->session = new SessionManager;
         $this->_loader = new \Twig_Loader_Filesystem('../src/templates');
 		$this->_twig = new \Twig_Environment($this->_loader, array(
-    		'cache' => false,
-            'debug' => true
+    		'cache' => $cache,
+            'debug' => $debug
         ));
         $this->_twig->addExtension(new \Twig_Extension_Debug());
         $this->_twig->addGlobal('session', $this->session->get());
