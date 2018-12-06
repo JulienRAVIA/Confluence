@@ -12,10 +12,10 @@
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
-              <div class="dropdown-menu">
-                {% for article in trad.cgu.articles %}
-                    <a class="dropdown-item" href="#art{{loop.index}}">{{ article.title }}</a>
-                {% endfor %}
+                <div class="dropdown-menu">
+                    {% for article in trad.cgu.articles %}
+                        <a class="dropdown-item" href="#art{{loop.index}}">{{ article.title }}</a>
+                    {% endfor %}
                 </div>
             </li>
         </ul>
@@ -31,4 +31,5 @@
             {% endfor %}
         {% endfor %}
     </div>
+</div>
 {% endblock %}
