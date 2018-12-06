@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ block('title') }}</title>
-    <link rel="icon" type="image/png" href="img\photos\favicon.png" />
+    <link rel="icon" type="image/png" href="img/photos/favicon.png" />
     {% block styles %}
         <link rel="stylesheet" href="/css/bootstrap/minty.min.css">
         <link rel="stylesheet" href="/css/style.css">
@@ -33,17 +33,7 @@
         <script src="/js/bootstrap/bootstrap.min.js"></script>
         <script src="/js/contact.js"></script>
         <script src="/js/sweetalert.min.js"></script>
-        <script>
-        var body = document.getElementById("body");
-        
-        $('button[data-toggle="accessibility"]').on('click', function() {
-          if(body.style.fontFamily == 'OpenDyslexic') {
-            body.style.fontFamily = 'Open Sans';
-          } else {
-            body.style.fontFamily = 'OpenDyslexic';
-          }
-        });
-        </script>
+        <script src="/js/accessibility.js"></script>
     {% endblock %}
 </body>
 </html>
