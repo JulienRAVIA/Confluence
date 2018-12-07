@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/leaflet/leaflet.css">
     {{ parent() }}
     <link rel="stylesheet" href="/css/leaflet/leaflet-bootstrapmodal.css">
+    <link rel="stylesheet" href="/css/leaflet/leaflet.zoomhome.css">
     <link rel="stylesheet" type="text/css" href="https://ignf.github.io/geoportal-extensions/current/dist/leaflet/GpPluginLeaflet.css">
 {% endblock %}
 
@@ -58,11 +59,11 @@
 </div>
 
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
     {% set images = ["Quai.jpg", "Musee_Confluence.jpg", "Novotel.jpg"] %}
     {% for image in images %}
-        <div class="col-md-4">
-                <img src="/img/photos/{{ image }}?w=300" class="lightbox img-fluid" style="max-width: 300px;">
+        <div class="col-md-4 col-sm-6" style="margin-bottom: 1em;">
+            <img src="/img/photos/{{ image }}?w=300" class="lightbox img-fluid" style="max-width: 300px;">
         </div>
     {% endfor %}
     </div>
@@ -75,6 +76,6 @@
     <script src="/js/leaflet/leaflet.js"></script>
     <script src="/js/leaflet/leaflet-providers.js"></script>
     <script src="/js/leaflet/leaflet-bootstrapmodal.js"></script>
-    <script src="https://ignf.github.io/geoportal-extensions/current/dist/leaflet/GpPluginLeaflet.js"></script>
+    <script src="/js/leaflet/leaflet.zoomhome.js"></script>
     <script src="/js/map.js"></script>
 {% endblock %}

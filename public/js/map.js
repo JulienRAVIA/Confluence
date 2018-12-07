@@ -1,9 +1,11 @@
 var map = L.map('map', {
     center: [45.736981, 4.817221],
     zoom: 14.50,
-    zoomSnap: 0.25
+    zoomSnap: 0.25,
+    zoomControl: false,
+    doubleClickZoom: false
 });
-    
+
 var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
 var polygon = L.polygon([
@@ -28,6 +30,9 @@ var polygon = L.polygon([
     fillOpacity: 0.3,
     radius: 100
 }).addTo(map);
+
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(map);
 
 new L.Control.BootstrapModal({
     modalId: 'liste',
