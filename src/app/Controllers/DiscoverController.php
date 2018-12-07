@@ -28,13 +28,25 @@ class DiscoverController extends BaseController
         return $this->render('discover.html.twig', compact('lieux','types', 'detail_type', 'type_active'));
     }
 
+    /**
+     * Recupère les images de la galerie
+     *
+     * @return void
+     */
     public function gallery()
+    {
+        $images = $this->db->getPhotos();
+
+        echo $this->render('gallery.html.twig', compact('images'));
+    }
+
+    private function refactorImages()
     {
         $dir = __DIR__.'/../../../public/img/photos';
         $adapter = new Local($dir);
-        $filesystem = new Filesystem($adapter);
+        $fileSystem = new Filesystem($adapter);
 
-        $files = $filesystem->listContents('/', true);
+        $files = $fileSystem->listContents('/', true);
         $slugify = new Slugify();
         $manager = new ImageManager(array('driver' => 'gd'));
         
@@ -43,17 +55,18 @@ class DiscoverController extends BaseController
 
         foreach($files as $file)
         {
-            if(array_key_exists('extension', $file) && in_array($file['extension'], $extensions))
+            if(array_key_exists('extension', $file) && in_array($file['extension'], $extensions) && $file['basename'] != 'logo.png')
             {
                 $slug = $slugify->slugify(ucwords($file['filename']), [
                     'separator' => '_',
                     'lowercase' => false
                 ]);
-                $size = $filesystem->getSize($file['basename']);
+                $size = $fileSystem->getSize($file['basename']);
                 
                 $filePath = $slug.'.'.$file['extension'];
-                if($file['basename'] != $filePath && !$filesystem->has($filePath)) {
-                    if($filesystem->rename($file['basename'], $filePath)) {
+                
+                if($file['basename'] != $filePath && !$fileSystem->has($filePath)) {
+                    if($fileSystem->rename($file['basename'], $filePath)) {
                         $fileSystem->delete($file['basename']);
                     }
                 }
@@ -64,9 +77,13 @@ class DiscoverController extends BaseController
                 }
                 
                 $images[] = $filePath;
+
+                $description = str_replace('_', ' ', $file['filename']);
+                if($this->db->addPhoto($filePath, $description, $size))
+                {
+                    $images[] = $filePath;
+                }
             } 
         }
-        shuffle($images);
-        echo $this->render('gallery.html.twig', compact('images'));
     }
 }

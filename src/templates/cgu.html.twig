@@ -7,7 +7,7 @@
     <h4 class="jumbotron-title">{{ trad.about.title }}</h4>
 </div>
 <div class="container">
-    <nav id="navbar-example2" class="navbar navbar-light bg-light mb-2">
+    <nav id="articles-cgu" class="navbar mb-2">
         <a class="navbar-brand" href="#">{{ trad.cgu.nav }}</a>
         <ul class="nav nav-pills">
             <li class="nav-item dropdown">
@@ -20,7 +20,7 @@
             </li>
         </ul>
     </nav>
-    <div data-spy="scroll" data-target="#navbar-example2" data-offset="0" id="cgu">
+    <div data-spy="scroll" data-target="#articles-cgu" data-offset="0" id="cgu">
         {% for article in trad.cgu.articles %}
             <h4 id="art{{loop.index}}">Article {{ loop.index }} : {{ article.title }}</h4>
 

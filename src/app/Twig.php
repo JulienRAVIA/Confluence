@@ -21,6 +21,7 @@ class Twig
         $debug = (getenv('ENV') == 'DEV') ? true : false;
         $cache = ($debug) ? false : __DIR__.'/../../cache/twig'; 
         $this->lang = $lang;
+        $meteo = new OpenWeather('Lyon', 'fr', $lang);
         $this->session = new SessionManager;
         $this->_loader = new \Twig_Loader_Filesystem('../src/templates');
 		$this->_twig = new \Twig_Environment($this->_loader, array(
@@ -32,6 +33,7 @@ class Twig
         $this->_twig->addGlobal('trad', $this->getTrad($lang));
         $this->_twig->addGlobal('lang', $this->lang);
         $this->_twig->addGlobal('domain', $_SERVER['HTTP_HOST']);
+        $this->_twig->addGlobal('meteo', $meteo);
 		return $this->_twig;
     }
 

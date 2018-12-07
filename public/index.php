@@ -9,6 +9,7 @@ $router = new AltoRouter();
 // Page d'accueil et déconnexion
 $router->addRoutes(array(
     array('GET', '/', 'App\\Controllers\\HomeController@index', 'fezf'), // affichage de la page d'accueil ou de la page de connexion si non connecté
+    array('GET', '/accessibility', 'App\\Controllers\\HomeController@accessibility', 'accessibility'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]', 'App\\Controllers\\HomeController@lang', 'switchLang'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[accueil|homepage]', 'App\\Controllers\\HomeController@index', 'index'), // affichage de la page d'accueil ou de la page de connexion si non connecté
     array('GET', '/[fr|en:lang]/[decouvrir|discover]', 'App\\Controllers\\DiscoverController@index', 'decouvrir'), // affichage de la page d'accueil ou de la page de connexion si non connecté

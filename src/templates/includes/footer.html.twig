@@ -1,12 +1,18 @@
 <footer>
-    <div class="container-fluid bg-primary">
+    <div class="">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                  <p class="text-white">&copy; Property of Lyon</p>
-                  <button type="button" id="contactButton" class="btn btn-primary btn-outline-light mt-2" data-toggle="modal" data-target="#contactForm">
-                        Contact
-                  </button>
+                <div class="col-md-5">
+                    <p class="text-white">&copy; {{ "now"|date('Y') }} {{ trad.footer.copyright }}</p>
+                    <button type="button" id="contactButton" class="btn btn-primary btn-outline-light btn-sm mt-1" data-toggle="modal" data-target="#contactForm">
+                      {{ trad.footer.contact }}
+                    </button>
+                </div>
+                <div class="col-md-4 text-right" id="meteo">
+                    <h5>{{ trad.footer.weather }}</h5>
+                    <p class="list-unstyled">
+                        {{ meteo.temperatures.now }}° {{ meteo.weather.description }} <i class="fa fa-water fa-lg"></i> / {{ meteo.name }}
+                    </p>
                 </div>
                 <div class="col-md-3 text-right">
                     <ul class="list-inline" id="networks">
@@ -29,7 +35,7 @@
                     <ul class="list-inline">
                         <li class="list-inline-item">
                             <a href="/{{ lang }}/{{ trad.footer.cgu.url }}">
-                                <p class="text-white">{{ trad.footer.cgu.title }}</p>
+                                {{ trad.footer.cgu.title }}
                             </a>
                         </li>
                     </ul>

@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
-use App\Database;
 use App\Twig;
+use App\Database;
+use App\OpenWeather;
 use App\Util\SessionManager;
-use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * BaseController 

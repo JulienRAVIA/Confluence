@@ -14,7 +14,7 @@
 {% block body %}
 {# Block principal du site #}
 
-<div class="jumbotron-header mb-0" id="jumbotron-homepage" style="background-image: url('http://fat.gfycat.com/NaughtyFrayedAplomadofalcon.gif');">
+<div class="jumbotron-header mb-0" id="jumbotron-homepage" style="background-image: url('http://giant.gfycat.com/NaughtyFrayedAplomadofalcon.gif');">
     <div class="container">
         <div class="jumbotron-title">
             <h1>{{ trad.home.jumbotron.title }}</h1>
@@ -26,17 +26,25 @@
 {# Bloc de texte #}
 <div class="jumbotron">
     <div class="">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore nobis asperiores culpa numquam rerum quam neque, laboriosam debitis magni dolor minus velit reprehenderit distinctio consequatur placeat similique quos ipsa id!</p>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="/api/photos/logo.png?w=250" alt="Logo">
+            </div>
+            <div class="col-md-9">
+                <h3 class="text-center">{{ trad.home.body.title }}</h3>
+                
+                {% for sentence in trad.home.body.description %}
+                    <p class="text-justify">{{ sentence }}</p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="mapid" class="mb-2">
+<div id="map">
     <!-- panel repères -->
     <div class="leaflet-top">
-        <div class="card" id="liste" style="margin-left: 10px; margin-top: 200px; padding: 20px; z-index: 2;">
+        <div class="card" id="liste" style="margin-left: 10px; margin-top: 200px; padding: 20px; z-index: 2; font-size: 15px; display: none;">
             <form id="types">
                 {% for type in types %}
                     <div class="custom-control custom-checkbox">

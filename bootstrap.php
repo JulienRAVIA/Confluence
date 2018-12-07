@@ -6,8 +6,12 @@ ini_set('memory_limit', '-1');
 include_once 'vendor/autoload.php';
 
 $session = new SessionManager;
-if($session->get('lang') === null) {
-    $session->set('lang', 'fr');
+$sessions = ['lang' => 'fr', 'accessibility' => false];
+
+foreach ($sessions as $key => $default) {
+    if($session->get($key) === null) {
+        $session->set($key, $default);
+    }
 }
 
 $dotenv = new Dotenv\Dotenv(__DIR__);

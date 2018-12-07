@@ -4,15 +4,6 @@
 
 {% block title %}Découvrir{% endblock %}
 
-{% block styles %}
-    {{ parent() }}
-    <style>
-        img {
-            max-width: 150px;
-        }
-    </style>
-{% endblock styles %}
-
 {% block body %}
     <div class="jumbotron-header" style="background-image: url('/api/photos/Pont.jpg?w=2000');">
         <h4 class="jumbotron-title">{{ trad.discover.title }}</h4>
@@ -24,9 +15,9 @@
         </div>
         <div id="macy-container">
             {% for image in images %}
-                <div class="demo">
-                    <a href="/img/photos/{{image}}" data-lity data-lity-target="/img/photos/{{ image }}">
-                        <img src="/api/photos/{{ image }}?w=300" alt="">
+                <div>
+                    <a href="/api/photos/{{image.fichier}}?w=1000" data-lity data-lity-target="/img/photos/{{ image.fichier }}" title="{{ image.description }}">
+                        <img src="/api/photos/{{ image.fichier }}?w=150" alt="{{ image.description }}">
                     </a>
                 </div>
             {% endfor %}

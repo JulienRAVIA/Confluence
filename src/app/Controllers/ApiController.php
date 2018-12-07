@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use League\Glide\ServerFactory;
+use League\Flysystem\Filesystem;
+use League\Flysystem\Adapter\Local;
 
 /**
  * Api Controller
@@ -66,14 +68,22 @@ class ApiController extends BaseController
     public function photos($request)
     {
         $path = $request['path'];
+        $source = __DIR__.'/../../../public/img/photos';
 
+        $adapter = new Local($source);
+        $fileSystem = new Filesystem($adapter);
         $server = ServerFactory::create([
-            'source' => __DIR__.'/../../../public/img/photos',
+            'source' => $source,
             'cache' => __DIR__.'/../../../cache/glide',
+            'max_image_size' => 3500*3500,
         ]);
         
         if($server->sourceFileExists($path)) {
-            $img = $server->outputImage($path, $_GET);
+            if(count($_GET)) {
+                $img = $server->outputImage($path, $_GET);
+            } else {
+                $img = $server->outputImage($path, ['w' => 1500]);
+            }
         } else {
             header('HTTP/1.0 404 Not Found', true, 404);
         }

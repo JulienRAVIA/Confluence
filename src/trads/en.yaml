@@ -16,7 +16,13 @@ home:
   title: Accueil
   jumbotron:
     title: Welcome to Confluence
-    subtitle: A living district
+    subtitle: A lively district
+  body:
+    title: Welcome to Confluence district. 
+    description:
+      - Discover a neighborhood been both modern and full of history!
+      - Fill with latest technology and architecture style,  each walk would bring some new surprises concerning the district and it shops.
+      - From coffee shops,  to an arcade games rooms, without forgetting a stunning natural history museum and differents kind of bars, this Confluence is definitely worth spending some time !
 
 discover:
   title: Discover
@@ -47,17 +53,31 @@ about:
     - title: 860
       description: More and more companies are willing to come back to the district as it population is endlessly growing. Nowadays it’s more than 860 companies that are already settle. 
     - title: 15 000
-      description: With the companies, came, indeed, the workers: they are now more than 15 000 to have been hired in the district.
+      description: With the companies, came, indeed, the workers - they are now more than 15 000 to have been hired in the district.
     - title: 5.5
       description: The district is growing by both urbanisation but also by the creation of new natural places. More than 5 hectares will be adds to this already so green district.
-        
 
 footer:
   contact: Contact us
   follow: Follow us on
+  copyright: City of Lyon. All rights reserved.
   cgu: 
     title: Terms of Use
     url: terms-of-use
+  weather: Weather
+
+contact:
+  title: Contact us
+  firstname: Firstname 
+  lastname: Lastname 
+  subject: Subject of your mail
+  mail: Email address
+  mail_confirm: Confirm your email address
+  message: Fill your message
+  reset: Reset
+  send: Send
+  warn: By clicking "Send", you certify having read our
+  info: We'll never keep of share your email address
 
 cgu: 
   title: Terms of Use

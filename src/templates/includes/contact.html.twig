@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Contactez-nous !</h5>
+        <h5 class="modal-title">{{ trad.contact.title }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -10,29 +10,29 @@
       <form action="" id="contact">
         <div class="modal-body">
           <div class="form-group">
-            <input type="text" class="form-control" name="firstname" id="field_firstname" placeholder="Prénom" required>
+            <input type="text" class="form-control" name="firstname" id="field_firstname" placeholder="{{ trad.contact.firstname }}" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="name" id="field_name" placeholder="Nom" required>
+            <input type="text" class="form-control" name="name" id="field_name" placeholder="{{ trad.contact.lastname }}" required>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="subject" id="field_subject" placeholder="Sujet de votre mail" required>
+            <input type="text" class="form-control" name="subject" id="field_subject" placeholder="{{ trad.contact.subject }}" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="field_email_address" placeholder="Mail" name="email_address" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" id="field_email_address" placeholder="{{ trad.contact.mail }}" name="email_address" aria-describedby="emailHelp" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="field_email_address_checkup" placeholder="Confirmez votre mail" name="email_address_checkup" aria-describedby="emailHelpCheckup" required>
-            <small id="emailHelpCheckup" class="form-text text-muted">Nous ne diffuserons jamais votre email.</small>
+            <input type="email" class="form-control" id="field_email_address_checkup" placeholder="{{ trad.contact.mail_confirm }}" name="email_address_checkup" aria-describedby="emailHelpCheckup" required>
+            <small id="emailHelpCheckup" class="form-text text-muted">{{ trad.contact.info }}.</small>
           </div>
           <div class="form-group">
-            <textarea class="form-control" id="field_message" name="message" placeholder="Saisissez votre texte" rows="4" required></textarea>
+            <textarea class="form-control" id="field_message" name="message" placeholder="{{ trad.contact.message }}" rows="4" required></textarea>
           </div>
         </div>
         <div class="modal-footer">
-          <small>En cliquant sur "Envoyer" vous certifiez avoir lu nos <a href="/cgu">CGU</a>.</small>
-          <button type="reset" class="btn btn-danger">Réinitialiser</button>
-          <button type="submit" id="send" class="btn btn-primary">Envoyer</button>
+          <small>{{ trad.contact.warn }} <a href="/{{ lang }}/{{ trad.footer.cgu.url }}">{{ trad.footer.cgu.title }}</a>.</small>
+          <button type="reset" class="btn btn-secondary btn-sm">{{ trad.contact.reset }}</button>
+          <button type="submit" id="send" class="btn btn-primary btn-sm">{{ trad.contact.send }}</button>
         </button>
         </div>
       </form>

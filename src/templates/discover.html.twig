@@ -41,7 +41,7 @@
                                     <div class="media-body">
                                         <h5 class="mt-0">{{ lieu.nom }}</h5>
                                         {% if lieu.type in [5, 6, 7, 8] %}
-                                            <p>{{ lieu.description|raw }}</p>
+                                            <p class="mb-0">{{ lieu.description|raw }}</p>
                                         {% else %}
                                             <button type="button" class="btn btn-primary btn-sm" data-toggle="show" data-place="{{ lieu.id}}">{{ trad.discover.places.read }}</button>
                                         {% endif %}

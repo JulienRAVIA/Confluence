@@ -22,6 +22,12 @@ home:
   jumbotron:
     title: Bienvenue à Confluence
     subtitle: Un quartier vivant
+  body:
+    title: Bienvenue sur le site du quartier de Confluence
+    description:
+      - Découvrez un quartier a la fois moderne et chargé d'histoire !
+      - A la pointe des nouvelles technologie et de l'architecture, chaque balade au sein de Confluence est l'occasion de découvrir une nouvelle facette du quartier et des commerces surprenant.
+      - Du café, a la salle d'arcade en passant par le musée d'histoire naturelle sans oublier les bars à thème, ce quartier saura vous faire oublier le temps qui passe !
 
 about:
   title: A propos du quartier
@@ -35,7 +41,7 @@ about:
     - title: 4 989
       description: Nombre de logements construits dans tout le quartier, aussi bien privés que publiques.
     - title: 1.2 milliard €
-      description: D’argent investit dans le projet, et celui-ci n’est pas encore terminé !
+      description: investi dans le projet, et celui-ci n’est pas encore terminé !
     - title: 10 000
       description: Plus de 10 000 personnes habite désormais Confluence, et le nombre est appelé a augmenté puisque c’est plus de 16 000 qui sont attendus d’ici 2025.
     - title: 860
@@ -45,16 +51,27 @@ about:
     - title: 5.5
       description: Le quartier s’agrandi aussi bien avec l’urbanisation qu’avec la présence de nouvel espaces vert. Plus de 5 hectares vont venir s’ajouté au quartier déjà bien vert.
 
-body:
-  title: Bienvenue à Confluence
-  subtitle: Un quartier vivant
-
 footer:
   contact: Nous contacter
   follow: Nous suivre sur
+  copyright: Ville de Lyon. Tous droits réservés.
   cgu: 
     title: CGU
     url: cgu
+  weather: Widget Météo
+
+contact:
+  title: Nous contacter
+  firstname: Prénom 
+  lastname: Nom 
+  subject: Sujet de votre mail
+  mail: Votre adresse email
+  mail_confirm: Confirmez votre adresse mail
+  message: Saisissez votre texte
+  reset: Réinitialiser
+  send: Envoyer
+  warn: En cliquant sur "Envoyer", vous certifiez avoir lu nos
+  info: Nous ne diffuserons jamais votre adresse mail
 
 cgu: 
   title: Conditions générales d'utilisation

@@ -1,10 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <img src="/img/photos/logo.png" style="max-width: 80px;">
+<nav class="navbar navbar-expand-lg  fixed-top">
+  <img src="/api/photos/logo.png?w=55" style="max-width: 55px;">
   
   <div class="container">
     <a class="navbar-brand" href="/">Confluence</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars"></i>
+      </span>
     </button>
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
@@ -17,11 +19,11 @@
         <li class="nav-item">
           <a class="nav-link {{ (page == 'about') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" id="lang">
           <a class="nav-link" href="/{{ trad.header.lang|lower }}">{{ trad.header.lang}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" data-toggle="accessibility" title="{{ trad.header.accessibility.title }}"><i class="fa fa-universal-access fa-lg"></i></a>
+        <li class="nav-item" id="accessibility">
+          <a class="nav-link {{ (session.accessibility) ? 'active' : '' }}" href="#" data-toggle="accessibility" title="{{ trad.header.accessibility.title }}"><i class="fa fa-universal-access fa-lg"></i></a>
         </li>
       </ul>
     </div>
