@@ -1,5 +1,7 @@
 # Projet Info-Media Confluence
 
+**LIRE FICHIER HOWTO POUR COMPRENDRE LE PROJET**
+
 Créer un site sur la ville de Lyon à travers le quartier
 * En Anglais et Français
 * Insérer cartographie

@@ -17,11 +17,21 @@ class HomeController extends BaseController
         echo $this->render('index.html.twig', compact('types'));
     }
 
+    /**
+     * Affiche la page des CGU
+     */
     public function cgu() 
     {
         echo $this->render('cgu.html.twig');
     }
 
+    /**
+     * Changement de langue
+     *
+     * @param $request
+     *
+     * @return void
+     */
     public function lang($request)
     {
         $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/';
@@ -31,6 +41,11 @@ class HomeController extends BaseController
         header('Location: '.$referer);
     }
 
+    /**
+     * Passage en mode accessibilité
+     *
+     * @return void
+     */
     public function accessibility()
     {
         if($this->session->get('accessibility') === null) {

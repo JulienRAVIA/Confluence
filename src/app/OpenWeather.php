@@ -30,18 +30,16 @@ class OpenWeather
     {
         $this->apiKey = getenv('API_OPENWEATHER');
         
-        $curl = new Curl();
-        $curl->get('http://api.openweathermap.org/data/2.5/weather', array(
-                    'q' => implode(',', compact('city', 'country')),
-                    'units' => $units,
-                    'lang' => $lang,
-                    'appId' => $this->apiKey
-            )
-        );
-        if ($curl->error) {
-            throw new \Exception('Erreur lors de la récupération des données de météo');
+        $params = http_build_query([ 
+            'q' => implode(',', compact('city', 'country')),
+            'units' => $units,
+            'lang' => $lang,
+            'appId' => $this->apiKey
+        ]);
+        if($req = file_get_contents('http://api.openweathermap.org/data/2.5/weather?'.$params)) {
+            $this->response = json_decode($req, false);
         } else {
-            $this->response = $curl->response;
+            throw new \Exception('Impossible d\'obtenir les données météo');
         }
     }
 
@@ -143,7 +141,14 @@ class OpenWeather
         var_dump($this->response);
     }
 
-    private function getIcon($icon)
+    /**
+     * Retourne l'icone FontAwesome correspondant à ;'image renvoyées
+     *
+     * @param string $icon
+     *
+     * @return string Icone
+     */
+    private function getIcon(string $icon)
     {
         $icons = [
             '01d' => 'sun',

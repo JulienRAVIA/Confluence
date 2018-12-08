@@ -14,7 +14,7 @@ class SessionManager
      *
      * @param string $key
      */
-    public function get(?string $key = null)
+    public function get(string $key = null)
     {
         if($key === null)
             return $_SESSION;
@@ -33,7 +33,7 @@ class SessionManager
      *
      * @return void
      */
-    public function set(string $key, $value): void
+    public function set(string $key, $value)
     {
         $_SESSION[$key] = $value;
     }
@@ -45,7 +45,7 @@ class SessionManager
      *
      * @return void
      */
-    public function unset(string $key): void
+    public function unset(string $key)
     {
         unset($_SESSION[$key]);
     }
@@ -55,7 +55,7 @@ class SessionManager
      *
      * @return void
      */
-    public function destroy(): void
+    public function destroy()
     {
         session_destroy();
     }

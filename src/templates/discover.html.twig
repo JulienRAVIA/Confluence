@@ -2,7 +2,7 @@
 
 {% set page = 'discover' %}
 
-{% block title %}Découvrir{% endblock %}
+{% block title %}{{ trad.discover.title }}{% endblock %}
 
 {% block body %}
     <div class="jumbotron-header" style="background-image: url('/api/photos/Pont.jpg?w=2000');">
@@ -12,14 +12,14 @@
         <div class="row justify-content-end">
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <a href="/{{ lang }}/{{ trad.discover.gallery.url }}">
+                    <a href="/{{ lang }}/{{ trad.discover.gallery.url }}" id="discover-link">
                         <i class="fa fa-images"></i> {{ trad.discover.gallery.title }}
                     </a>
                 </li>
             </ul>
         </div>
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-3">
                 <ul class="nav flex-column" id="types">
                     {% for type in types %}
                         <li class="nav-item">
@@ -28,7 +28,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-9">
+            <div class="col-md-9">
             <h5>{{ detail_type.libelle }}</h5>
                 {% for lieu in lieux %}
                         <div class="card mb-2">

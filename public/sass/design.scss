@@ -30,6 +30,7 @@ body {
 
     &.btn-primary {
         background-color: $green;
+        border: 1px solid white;
     }
 
     &.btn-secondary {
@@ -228,9 +229,17 @@ footer {
     }
 }
 
+#discover-link {
+    color: $green;
+
+    &:hover {
+        text-align: none;
+    }
+}
+
 ul.nav#types {
     > li.nav-item > a.nav-link {
-
+        color: $green;
         margin: 0.1rem 0;
 
         &.active {

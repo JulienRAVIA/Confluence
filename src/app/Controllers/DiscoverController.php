@@ -40,6 +40,11 @@ class DiscoverController extends BaseController
         echo $this->render('gallery.html.twig', compact('images'));
     }
 
+    /**
+     * Altération des photos (renommage, redimensionnement à la volée)
+     *
+     * @return void
+     */
     private function refactorImages()
     {
         $dir = __DIR__.'/../../../public/img/photos';

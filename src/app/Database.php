@@ -173,19 +173,41 @@ class Database {
         return $query->fetchAll();
     }
 
+    /**
+     * Recupération des photos
+     * 
+     * @return array
+     */
     public function getPhotos()
     {
         $query = Database::$dbh->query('SELECT * FROM photos');
         return $query->fetchAll();
     }
 
-    public function addLieu(int $type, string $nom, string $description_fr, string $description_en, string $gps, ?string $image)
+    /**
+     * Ajoute un lieu
+     *
+     * @param int $type Type de lieu
+     * @param string $nom Nom du lieu
+     * @param string $description_fr Description française
+     * @param string $description_en Description anglaise
+     * @param string $gps Coordonnées GPS
+     * @param string|null $image Image du lieu
+     */
+    public function addLieu(int $type, string $nom, string $description_fr, string $description_en, string $gps, $image)
     {
         $query = Database::$dbh->prepare('INSERT INTO lieux(nom, type, description_fr, description_en, gps, image)
                                         VALUES(:nom, :type, :description_fr, :description_en, :gps, :image)');
         return $query->execute(compact('nom', 'type', 'description_fr', 'description_en', 'gps', 'image'));
     }
 
+    /**
+     * Ajoute une photo
+     *
+     * @param string $fichier
+     * @param string $description
+     * @param int $fileSize
+     */
     public function addPhoto(string $fichier, string $description, int $fileSize)
     {
         $query = Database::$dbh->prepare('INSERT INTO photos(fichier, description, taille)

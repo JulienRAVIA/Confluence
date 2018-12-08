@@ -53,6 +53,7 @@ class Twig
     	}
     }
 
+    /** Recupère le fichier de traduction */
     private function getTrad()
     {
         return Yaml::parseFile('../src/trads/'.$this->lang.'.yaml');

@@ -1,5 +1,3 @@
-lang: fr
-
 header:
   home: 
     title: Accueil
@@ -18,7 +16,7 @@ header:
     title: Mode dyslexique
 
 home:
-  title: Accueil
+  title: Découvrez le quartier de Confluence
   jumbotron:
     title: Bienvenue à Confluence
     subtitle: Un quartier vivant

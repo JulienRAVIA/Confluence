@@ -15,6 +15,7 @@ body.accessibility h1, body.accessibility p, body.accessibility span, body.acces
 }
 .btn.btn-primary {
   background-color: #73c09d;
+  border: 1px solid white;
 }
 .btn.btn-secondary {
   background-color: #e8e8e8;
@@ -180,7 +181,15 @@ footer .col-md-5, footer .col-md-3, footer .col-md-4 {
   border-radius: 0.2rem;
 }
 
+#discover-link {
+  color: #73c09d;
+}
+#discover-link:hover {
+  text-align: none;
+}
+
 ul.nav#types > li.nav-item > a.nav-link {
+  color: #73c09d;
   margin: 0.1rem 0;
 }
 ul.nav#types > li.nav-item > a.nav-link.active {

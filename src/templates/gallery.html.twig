@@ -2,16 +2,16 @@
 
 {% set page = 'discover' %}
 
-{% block title %}Découvrir{% endblock %}
+{% block title %}{{ trad.discover.gallery.title }} - {{ trad.discover.title }}{% endblock %}
 
 {% block body %}
-    <div class="jumbotron-header" style="background-image: url('/api/photos/Pont.jpg?w=2000');">
-        <h4 class="jumbotron-title">{{ trad.discover.title }}</h4>
+    <div class="jumbotron-header" style="background-image: url('/api/photos/Panorama_Centre_Commercial_2.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.discover.gallery.title }}</h4>
     </div>
     <div class="container">
         <div class="row justify-content-between mb-4">
             <h4>{{ trad.discover.gallery.subtitle }}</h4>
-            <a href="../{{ trad.discover.places.url }}" class="btn btn-link"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
+            <a href="../{{ trad.discover.places.url }}" class="btn btn-link" id="discover-link"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
         </div>
         <div id="macy-container">
             {% for image in images %}

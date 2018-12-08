@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="https://ignf.github.io/geoportal-extensions/current/dist/leaflet/GpPluginLeaflet.css">
 {% endblock %}
 
-{% block title %}Découvrez le quartier de Confluence{% endblock %}
+{% block title %}{{ trad.home.title }}{% endblock %}
 
 {% block body %}
 {# Block principal du site #}
@@ -29,7 +29,7 @@
     <div class="">
         <div class="row">
             <div class="col-md-3">
-                <img src="/api/photos/logo.png?w=250" alt="Logo">
+                <img src="/api/photos/logo.png?w=250"  class="lightbox img-fluid" alt="Logo">
             </div>
             <div class="col-md-9">
                 <h3 class="text-center">{{ trad.home.body.title }}</h3>

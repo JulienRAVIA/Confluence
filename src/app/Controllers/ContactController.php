@@ -11,12 +11,10 @@ use App\Util\Regex;
 class ContactController extends BaseController
 {
     // Destinataire par défaut
-    const EMAIL_ADDRESS = 'confluence@yopmail.com';
+    const EMAIL_ADDRESS = 'confluence69009@gmail.com';
 
     /**
      * Vérification du formulaire et envoi du mail
-     *
-     * @return void
      */
     public function send() 
     {
