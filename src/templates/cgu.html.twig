@@ -1,0 +1,35 @@
+{% extends 'includes/template.html.twig' %}
+
+{% block title %}{{ trad.cgu.title }}{% endblock %}
+
+{% block body %}
+<div class="jumbotron-header" style="background-image: url('/api/photos/Panorama_musee_confluence.jpg?w=2000');">
+    <h4 class="jumbotron-title">{{ trad.about.title }}</h4>
+</div>
+<div class="container">
+    <nav id="articles-cgu" class="navbar mb-2">
+        <a class="navbar-brand" href="#">{{ trad.cgu.nav }}</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Articles</a>
+                <div class="dropdown-menu">
+                    {% for article in trad.cgu.articles %}
+                        <a class="dropdown-item" href="#art{{loop.index}}">{{ article.title }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div data-spy="scroll" data-target="#articles-cgu" data-offset="0" id="cgu">
+        {% for article in trad.cgu.articles %}
+            <h4 id="art{{loop.index}}">Article {{ loop.index }} : {{ article.title }}</h4>
+
+            {% for line in article.lines %}
+                <p>
+                    {{ line|raw }}
+                </p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,242 @@
+@import url("https://cdn.clarkhacks.com/OpenDyslexic/v1/OpenDyslexic.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+* {
+  font-family: "Open Sans", cursive;
+}
+
+/* Body */
+body.accessibility h1, body.accessibility p, body.accessibility span, body.accessibility li, body.accessibility a {
+  font-family: "OpenDyslexic" !important;
+}
+
+.btn {
+  border-radius: 0.2rem;
+}
+.btn.btn-primary {
+  background-color: #73c09d;
+  border: 1px solid white;
+}
+.btn.btn-secondary {
+  background-color: #e8e8e8;
+  color: black;
+  border-color: black;
+}
+
+/* Navbar */
+.navbar {
+  -webkit-box-shadow: 0 8px 6px -6px #999;
+  -moz-box-shadow: 0 8px 6px -6px #999;
+  box-shadow: 0 8px 6px -6px #999;
+  padding: 0 2rem;
+  background-color: #e8e8e8;
+}
+.navbar a {
+  color: rgba(0, 0, 0, 0.7);
+}
+.navbar a.navbar-brand {
+  font-family: "Comfortaa", cursive;
+}
+.navbar .navbar-toggler-icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+@media all and (max-width: 992px) {
+  .navbar img {
+    display: none;
+  }
+}
+
+@media all and (max-width: 992px) {
+  ul.navbar-nav {
+    margin-bottom: 1rem;
+  }
+}
+ul.navbar-nav > li.nav-item > a.nav-link.active {
+  background-color: #7dc6df;
+  color: white;
+}
+ul.navbar-nav > li.nav-item > a.nav-link:hover:not(.active) {
+  color: white;
+}
+ul.navbar-nav > li.nav-item > a.nav-link:focus:not(.active), ul.navbar-nav > li.nav-item > a.nav-link:hover:not(.active) {
+  color: #73c09d;
+  font-weight: 500;
+}
+@media all and (max-width: 992px) {
+  ul.navbar-nav > li.nav-item > a.nav-link {
+    padding: 5px;
+  }
+}
+@media all and (max-width: 992px) {
+  ul.navbar-nav > li.nav-item li.nav-item > a.nav-link {
+    padding: 5px;
+  }
+}
+@media all and (min-width: 992px) {
+  ul.navbar-nav > li.nav-item:nth-last-child(-n+2) {
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  ul.navbar-nav > li.nav-item:last-child {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+  }
+}
+ul.navbar-nav > li.nav-item#lang > a.nav-link, ul.navbar-nav > li.nav-item#accessibility > a.nav-link {
+  background-color: inherit;
+}
+ul.navbar-nav > li.nav-item#lang > a.nav-link:hover, ul.navbar-nav > li.nav-item#accessibility > a.nav-link:hover {
+  color: white !important;
+  background-color: #73c09d;
+}
+ul.navbar-nav > li.nav-item#lang > a.nav-link.active, ul.navbar-nav > li.nav-item#accessibility > a.nav-link.active {
+  color: #73c09d;
+}
+
+/* Footer */
+footer {
+  color: white;
+  background-color: #73c09d;
+  margin-top: 1em;
+}
+footer p {
+  margin-bottom: 0;
+}
+footer h5 {
+  margin-bottom: 0.5rem;
+}
+footer a {
+  color: white;
+  padding: 5px;
+}
+footer a:hover {
+  text-decoration: none;
+  background-color: white;
+  color: #73c09d;
+}
+footer ul {
+  margin-bottom: 0.5rem;
+}
+footer .col-md-5, footer .col-md-3, footer .col-md-4 {
+  padding-top: 15px;
+}
+
+/* Jumbotrons */
+.jumbotron {
+  margin-bottom: 0;
+  padding: 2.5%;
+  border-radius: 0;
+}
+
+.jumbotron-header {
+  padding: 200px;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 1em;
+}
+@media all and (max-width: 992px) {
+  .jumbotron-header {
+    padding: 150px 0 90px 0 !important;
+  }
+  .jumbotron-header .jumbotron-title > h1 {
+    font-size: 30px;
+  }
+}
+.jumbotron-header .jumbotron-title {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  border: 2px solid #e8e8e8;
+  color: white;
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+}
+.jumbotron-header .jumbotron-title h1, .jumbotron-header .jumbotron-title h2, .jumbotron-header .jumbotron-title h3, .jumbotron-header .jumbotron-title h4, .jumbotron-header .jumbotron-title h5, .jumbotron-header .jumbotron-title h6 {
+  color: white;
+  text-align: center;
+  text-shadow: -2px 0px 5px black;
+}
+.jumbotron-header .jumbotron-title > p {
+  font-family: "Open Sans", cursive;
+  font-size: 18px;
+}
+.jumbotron-header#jumbotron-homepage {
+  padding: 300px;
+}
+
+/* Map */
+#map {
+  height: 600px;
+  margin-bottom: 2rem;
+}
+#map > .leaflet-top, #map > .leaflet-bottom {
+  pointer-events: all;
+}
+#map > .custom-control-label {
+  padding-top: 3.5px;
+}
+
+.modal {
+  border: 1px solid black;
+}
+.modal .modal-content {
+  border-radius: 0.2rem;
+}
+
+#discover-link {
+  color: #73c09d;
+}
+#discover-link:hover {
+  text-align: none;
+}
+
+ul.nav#types > li.nav-item > a.nav-link {
+  color: #73c09d;
+  margin: 0.1rem 0;
+}
+ul.nav#types > li.nav-item > a.nav-link.active {
+  background-color: #7dc6df;
+  color: white;
+}
+ul.nav#types > li.nav-item > a.nav-link:hover:not(.active) {
+  color: white;
+  background-color: #73c09d;
+}
+
+.card {
+  border-radius: 0.2rem;
+}
+
+#numbers > .number > h4 {
+  text-align: center;
+  padding: 5px;
+  background-color: #73c09d;
+  color: white;
+  margin-bottom: 0;
+}
+#numbers > .number p {
+  padding: 10px;
+  text-align: justify;
+  border: 1px solid #cfcfcf;
+}
+
+button#contactButton:hover {
+  background-color: white;
+  color: #73c09d;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: white;
+  background-color: #73c09d;
+}
+
+#meteo {
+  border-right: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+}
+#meteo h5 {
+  color: white;
+}
+#meteo p {
+  margin: 0;
+}
+
+/*# sourceMappingURL=design.css.map */

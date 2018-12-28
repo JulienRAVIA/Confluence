@@ -11,12 +11,10 @@ use App\Util\Regex;
 class ContactController extends BaseController
 {
     // Destinataire par défaut
-    const EMAIL_ADDRESS = 'julien.ravia@gmail.com';
+    const EMAIL_ADDRESS = 'confluence69009@gmail.com';
 
     /**
      * Vérification du formulaire et envoi du mail
-     *
-     * @return void
      */
     public function send() 
     {
@@ -27,6 +25,12 @@ class ContactController extends BaseController
                 'min' => 1,
                 'max' => 50,
                 'value' => filter_input(INPUT_POST, 'email_address', FILTER_SANITIZE_STRING)
+            ],
+            'email_address_checkup' => [
+                'required' => true,
+                'min' => 1,
+                'max' => 50,
+                'value' => filter_input(INPUT_POST, 'email_address_checkup', FILTER_SANITIZE_STRING)
             ],
             'message' => [
                 'required' => true,
@@ -59,7 +63,11 @@ class ContactController extends BaseController
         // On vérifie si chaque champ est correctement renseigné
         foreach ($fields as $key => $field) {
             if($this->isSpam($field['value'], $field['min'], $field['max']) || ($field['required'] && empty($field['value']))) {
-                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli '. $key, 'code' => 'error'));
+                echo json_encode(array('message' => 'Un des champs n\'est pas correctement rempli', 'code' => 'error', 'field' => $key));
+                return false;
+            }
+            if($key == 'email_address' && $field['value'] != $fields['email_address_checkup']['value']) {
+                echo json_encode(array('message' => 'Les adresses mails doivent correspondre', 'code' => 'error', 'field' => $key));
                 return false;
             }
             if(isset($field['regex'])) {
@@ -100,10 +108,10 @@ class ContactController extends BaseController
         
         try {
             if($this->mailer->send()) {
-                echo json_encode(array('code' => 'success', 'message' => 'Votre mail à été envoyé, félicitations !'));
+                echo json_encode(array('title' => 'Merci :)', 'code' => 'success', 'message' => 'Votre mail a été envoyé, nous vous ferons un retour dès que possible.'));
                 return true;
             } else {
-                echo json_encode(array('code' => 'error', 'message' => 'Votre mail n\'à pas été envoyé, réessayez !'));
+                echo json_encode(array('title' => 'Oops :(', 'code' => 'error', 'message' => 'Votre mail n\'à pas été envoyé, réessayez !'));
                 return false;
             }
         } catch(Exception $e) {

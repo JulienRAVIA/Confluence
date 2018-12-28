@@ -1,28 +1,41 @@
 <footer>
-    <div class="container-fluid bg-primary">
+    <div class="">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                  <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#contactForm">
-                        Contact
-                  </button>
+                <div class="col-md-5">
+                    <p class="text-white">&copy; {{ "now"|date('Y') }} {{ trad.footer.copyright }}</p>
+                    <button type="button" id="contactButton" class="btn btn-primary btn-outline-light btn-sm mt-1" data-toggle="modal" data-target="#contactForm">
+                      {{ trad.footer.contact }}
+                    </button>
+                </div>
+                <div class="col-md-4 text-right" id="meteo">
+                    <h5>{{ trad.footer.weather }}</h5>
+                    <p class="list-unstyled">
+                        {{ meteo.temperatures.now }}° {{ meteo.weather.description }} <i class="fa fa-water fa-lg"></i> / {{ meteo.name }}
+                    </p>
                 </div>
                 <div class="col-md-3 text-right">
+                    <ul class="list-inline" id="networks">
+                        <li class="list-inline-item">
+                            <a href="https://www.facebook.com/quartierConfluence/" title="{{ trad.footer.follow }} Facebook" target="_blank">
+                                <i class="fab fa-facebook fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://twitter.com/EcoConfluence" title="{{ trad.footer.follow }} Twitter" target="_blank">
+                                <i class="fab fa-twitter fa-lg"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://www.instagram.com/ecoconfluence/" title="{{ trad.footer.follow }} Instagram" target="_blank">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </a>
+                        </li>
+                    </ul>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-instagram"></i>
+                            <a href="/{{ lang }}/{{ trad.footer.cgu.url }}">
+                                {{ trad.footer.cgu.title }}
                             </a>
                         </li>
                     </ul>

@@ -1,0 +1,50 @@
+{% extends 'includes/template.html.twig' %}
+
+{% set page = 'discover' %}
+
+{% block title %}{{ trad.discover.gallery.title }} - {{ trad.discover.title }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron-header" style="background-image: url('/api/photos/Panorama_Centre_Commercial_2.jpg?w=2000');">
+        <h4 class="jumbotron-title">{{ trad.discover.gallery.title }}</h4>
+    </div>
+    <div class="container">
+        <div class="row justify-content-between mb-4">
+            <h4>{{ trad.discover.gallery.subtitle }}</h4>
+            <a href="../{{ trad.discover.places.url }}" class="btn btn-link" id="discover-link"><i class="fa fa-map-pin"></i> {{ trad.discover.places.title }}</a>
+        </div>
+        <div id="macy-container">
+            {% for image in images %}
+                <div>
+                    <a href="/api/photos/{{image.fichier}}?w=1000" data-lity data-lity-target="/img/photos/{{ image.fichier }}" title="{{ image.description }}">
+                        <img src="/api/photos/{{ image.fichier }}?w=150" alt="{{ image.description }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/macy.js"></script>
+    <script src="/js/discover.js"></script>
+    <script>
+        var masonry = new Macy({
+            container: '#macy-container',
+            trueOrder: false,
+            waitForImages: false,
+            useOwnImageLoader: false,
+            debug: true,
+            mobileFirst: true,
+            columns: 2,
+            margin: 4,
+            breakAt: {
+                1200: 7,
+                940: 5,
+                520: 3,
+                400: 2
+            }
+        });
+    </script>
+{% endblock %}

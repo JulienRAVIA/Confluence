@@ -27,19 +27,16 @@ class MailboxLayer
     {
         $this->apiKey = getenv('API_MAILBOX_LAYER');
 
-        $curl = new Curl();
-        $curl->get('http://apilayer.net/api/check', array(
-                'access_key' => $this->apiKey,
-                'email' => $email,
-                'smtp' => 1,
-                'format' => 1
-            )
-        );
-
-        if ($curl->error) {
-            throw new \Exception('Erreur lors de la récupération des données');
+        $params = http_build_query([ 
+            'access_key' => $this->apiKey,
+            'email' => $email,
+            'smtp' => 1,
+            'format' => 1
+        ]);
+        if($req = file_get_contents('http://apilayer.net/api/check?'.$params)) {
+            $this->response = json_decode($req, false);
         } else {
-            $this->response = $curl->response;
+            throw new \Exception('Impossible d\'obtenir les données météo');
         }
     }
 

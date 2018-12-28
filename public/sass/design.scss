@@ -1,0 +1,299 @@
+@charset 'utf-8';
+@import url('https://cdn.clarkhacks.com/OpenDyslexic/v1/OpenDyslexic.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+$blue: rgb(125, 198, 223);
+$green: rgb(115, 192, 157);
+$grey: rgb(232, 232, 232);
+$black: rgb(0, 0, 0);
+
+$brand-font: "Comfortaa", cursive;
+$body-font: "Open Sans", cursive;
+$accessibility-font: 'OpenDyslexic';
+
+* {
+    font-family: $body-font;
+}
+
+/* Body */
+body {
+    &.accessibility {
+        h1, p, span, li, a {
+            font-family: $accessibility-font !important;
+        }
+    }
+}
+
+.btn {
+    border-radius: 0.2rem;
+
+    &.btn-primary {
+        background-color: $green;
+        border: 1px solid white;
+    }
+
+    &.btn-secondary {
+        background-color: $grey;
+        color: black;
+        border-color: black;
+    }
+}
+
+/* Navbar */
+.navbar {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+    padding: 0 2rem;
+    background-color: $grey;
+
+    a {
+        color: rgba(0, 0, 0, 0.7);
+    
+        &.navbar-brand {
+            font-family: $brand-font;
+        }
+    }
+
+    .navbar-toggler-icon {
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+    @media all and (max-width: 992px) {
+        img {
+            display: none;
+        }
+    }
+}
+
+ul.navbar-nav {
+    @media all and (max-width: 992px) {
+        margin-bottom: 1rem;
+    }
+    > li.nav-item {
+        > a.nav-link {
+            &.active {
+                background-color: $blue;
+                color: white;
+            }
+
+            &:hover:not(.active) {
+                color: white;
+            }
+
+            &:focus:not(.active), 
+            &:hover:not(.active) {
+                color: $green;
+                font-weight: 500;
+            }
+
+            @media all and (max-width: 992px) {
+                padding: 5px;
+            }
+        }
+
+        @media all and (max-width: 992px) {
+            li.nav-item > a.nav-link {
+                padding: 5px;
+            }
+        }
+
+        @media all and (min-width: 992px) {
+            &:nth-last-child(-n+2)  {
+                border-left: 1px solid rgba(0, 0, 0, 0.2);
+            }
+            
+            &:last-child {
+                border-right: 1px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        &#lang > a.nav-link,
+        &#accessibility > a.nav-link {
+            background-color: inherit;
+
+            &:hover {
+                color: white !important;
+                background-color: $green;
+            }
+
+            &.active {
+                color: $green;
+            }
+        }
+    }
+}
+
+/* Footer */
+footer {
+    color: white;
+    background-color: $green;
+    margin-top: 1em;
+
+    p {
+        margin-bottom: 0;
+    }
+
+    h5 {
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        color: white;
+        padding: 5px;
+        &:hover {
+            text-decoration: none;
+            background-color: white;
+            color: $green;
+        }
+    }
+
+    ul {
+        margin-bottom: 0.5rem;
+    }
+
+    .col-md-5, .col-md-3, .col-md-4 {
+        padding-top: 15px;
+    }
+}
+
+/* Jumbotrons */
+
+.jumbotron {
+    margin-bottom: 0;
+    padding: 2.5%;
+    border-radius: 0;
+}
+
+.jumbotron-header {
+    padding: 200px; 
+    background-position: center; 
+    background-size: cover;
+    margin-bottom: 1em;
+
+    @media all and (max-width: 992px){
+       padding: 150px 0 90px 0 !important;  
+       
+       .jumbotron-title > h1 {
+            font-size: 30px;
+       }
+    }
+
+    .jumbotron-title {
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        border: 2px solid $grey;
+        color: white;
+        text-align: center;
+        font-family: 'Comfortaa', cursive;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: white;
+            text-align: center;
+            text-shadow: -2px 0px 5px black;
+        }
+
+        > p {
+            font-family: $body-font;
+            font-size: 18px;
+        }
+    }
+
+    &#jumbotron-homepage {
+        padding: 300px;
+    }
+}
+
+/* Map */
+
+#map {
+    height: 600px;
+    margin-bottom: 2rem;
+
+    > .leaflet-top, > .leaflet-bottom {
+        pointer-events: all;
+    }
+
+    > .custom-control-label {
+        padding-top: 3.5px;
+    }
+}
+
+.modal {
+    border: 1px solid black;
+
+    .modal-content  {
+        border-radius: 0.2rem;
+    }
+}
+
+#discover-link {
+    color: $green;
+
+    &:hover {
+        text-align: none;
+    }
+}
+
+ul.nav#types {
+    > li.nav-item > a.nav-link {
+        color: $green;
+        margin: 0.1rem 0;
+
+        &.active {
+            background-color: $blue;
+            color: white;
+        }
+        &:hover:not(.active) {
+            color: white;
+            background-color: $green;
+        }
+    }
+}
+
+.card {
+    border-radius: 0.2rem;
+}
+
+#numbers > .number {
+    > h4 {
+        text-align: center;
+        padding: 5px;
+        background-color: $green;
+        color: white;
+        margin-bottom: 0;
+    }
+
+    p {
+        padding: 10px;
+        text-align: justify;
+        border: 1px solid darken($grey, 10%);
+    }
+}
+
+button#contactButton {
+    &:hover {
+        background-color: white;
+        color: $green;
+    }
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: white;
+    background-color: $green;
+}
+
+#meteo {
+    h5 {
+        color: white;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    border-right: 1px solid $grey;
+    border-left: 1px solid $grey;
+}

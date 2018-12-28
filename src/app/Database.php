@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Util\SessionManager;
+
 /**
  * Classe d'accès aux données
  */
@@ -51,6 +53,7 @@ class Database {
         $this->database = getenv('DATABASE_NAME');
         $this->user = getenv('DATABASE_USER');
         $this->password = getenv('DATABASE_PASSWORD');
+        $this->session = new SessionManager;
 
 
         $options[\PDO::ATTR_ERRMODE] = \PDO::ERRMODE_EXCEPTION;
@@ -90,9 +93,22 @@ class Database {
      */
     public function getTypes()
     {
-        $query = Database::$dbh->query('SELECT * FROM types');
+        $query = Database::$dbh->query('SELECT id, icone, libelle_'.$this->session->get('lang').' as libelle FROM types');
         return $query->fetchAll();
     }
+
+    /**
+     * Récupération des types de lieux
+     *
+     * @return array
+     */
+    public function getType(int $type)
+    {
+        $query = Database::$dbh->prepare('SELECT id, icone, libelle_'.$this->session->get('lang').' as libelle FROM types WHERE id = :id');
+        $query->execute(['id' => $type]);
+        return $query->fetch();
+    }
+    
     
     /**
      * Récupération de tous les lieux
@@ -101,8 +117,20 @@ class Database {
      */
     public function getLieux()
     {
-        $query = Database::$dbh->query('SELECT * FROM lieux INNER JOIN types ON lieux.type = types.id');
+        $query = Database::$dbh->query('SELECT lieux.nom, gps, description_'.$this->session->get('lang').' as description, image, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id');
         return $query->fetchAll();
+    }
+
+    /**
+     * Récupération de tous les lieux
+     *
+     * @return array
+     */
+    public function getLieu(string $lieu)
+    {
+        $query = Database::$dbh->prepare('SELECT lieux.nom, gps, description_'.$this->session->get('lang').' as description, image, types.libelle_'.$this->session->get('lang').' as type, icone FROM lieux INNER JOIN types ON lieux.type = types.id WHERE lieux.id = :lieu');
+        $query->execute(compact('lieu'));
+        return $query->fetch();
     }
 
     /**
@@ -115,8 +143,8 @@ class Database {
      */
     public function getLieuxByType(int $type)
     {
-        $query = Database::$dbh->prepare('SELECT lieux.* FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type');
-        $query->execute(array('type' => 1));
+        $query = Database::$dbh->prepare('SELECT lieux.id, lieux.nom, gps, description_'.$this->session->get('lang').' as description, image, types.id as type FROM lieux INNER JOIN types ON lieux.type = types.id WHERE types.id = :type ORDER BY image DESC, nom');
+        $query->execute(array('type' => $type));
         return $query->fetchAll();
     }
 
@@ -141,8 +169,49 @@ class Database {
      */
     public function getLieuxOnly()
     {
-        $query = Database::$dbh->query('SELECT * FROM lieux');
+        $query = Database::$dbh->query('SELECT id, nom, gps, description_'.$this->session->get('lang').' as description, image FROM lieux');
         return $query->fetchAll();
     }
 
+    /**
+     * Recupération des photos
+     * 
+     * @return array
+     */
+    public function getPhotos()
+    {
+        $query = Database::$dbh->query('SELECT * FROM photos');
+        return $query->fetchAll();
+    }
+
+    /**
+     * Ajoute un lieu
+     *
+     * @param int $type Type de lieu
+     * @param string $nom Nom du lieu
+     * @param string $description_fr Description française
+     * @param string $description_en Description anglaise
+     * @param string $gps Coordonnées GPS
+     * @param string|null $image Image du lieu
+     */
+    public function addLieu(int $type, string $nom, string $description_fr, string $description_en, string $gps, $image)
+    {
+        $query = Database::$dbh->prepare('INSERT INTO lieux(nom, type, description_fr, description_en, gps, image)
+                                        VALUES(:nom, :type, :description_fr, :description_en, :gps, :image)');
+        return $query->execute(compact('nom', 'type', 'description_fr', 'description_en', 'gps', 'image'));
+    }
+
+    /**
+     * Ajoute une photo
+     *
+     * @param string $fichier
+     * @param string $description
+     * @param int $fileSize
+     */
+    public function addPhoto(string $fichier, string $description, int $fileSize)
+    {
+        $query = Database::$dbh->prepare('INSERT INTO photos(fichier, description, taille)
+                                        VALUES(:fichier, :description, :fileSize)');
+        return $query->execute(compact('fichier', 'description', 'fileSize'));
+    }
 }

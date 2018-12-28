@@ -1,11 +1,62 @@
-var map = L.map('mapid', {
+var map = L.map('map', {
     center: [45.736981, 4.817221],
-    zoom: 15.3
+    zoom: 14.50,
+    zoomSnap: 0.25,
+    zoomControl: false,
+    doubleClickZoom: false
 });
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(map);
+
+var polygon = L.polygon([
+    [45.743448811311815, 4.818449020385742],
+    [45.7424904212476, 4.8209381103515625],
+    [45.7411127067066, 4.824028015136719],
+    [45.74009437410821, 4.823427200317383],
+    [45.736979359100445, 4.820852279663086],
+    [45.733534669030526, 4.819049835205078],
+    [45.728472086747104, 4.818534851074219],
+    [45.730868632600014, 4.817848205566406],
+    [45.732126778009466, 4.815788269042969],
+    [45.7350443678686, 4.81501579284668],
+    [45.74037591479553, 4.813814163208008],
+    [45.74275997011605, 4.814200401306152],
+    [45.74380820334429, 4.814672470092773],
+    [45.74488636556012, 4.815273284912109],
+    [45.743448811311815, 4.818449020385742]
+], {
+    color: 'black',
+    fillColor: '#7DC6DF',
+    fillOpacity: 0.3,
+    radius: 100
 }).addTo(map);
+
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(map);
+
+new L.Control.BootstrapModal({
+    modalId: 'liste',
+    tooltip: "Repères",
+    glyph: 'map-signs'
+}).addTo(map);
+    
+L.Control.Watermark = L.Control.extend({
+    onAdd: function(map) {
+        var img = L.DomUtil.create('img');
+
+        img.src = '../img/photos/logo.png';
+        img.style.width = '150px';
+
+        return img;
+    },
+});
+    
+L.control.watermark = function(opts) {
+    return new L.Control.Watermark(opts);
+}
+    
+L.control.watermark({ position: 'bottomright' }).addTo(map);
+
 
 var icons= [];
 $.ajax({
@@ -14,16 +65,13 @@ $.ajax({
     dataType: "json",
     success: function(results) {
         $.each(results, function(k, v) {
-            console.log(v.icone);
             icons[v.id] = new L.icon({
                 iconUrl: '/img/icons/' + v.icone + '.png',
-                iconSize:     [20, 20],
+                iconSize: [20, 20],
             });
         });
     }
 });
-
-var Esri_WorldTopoMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}').addTo(map);
 
 var marqueurs = [];
 $('form#types').on('change', function() {

@@ -1,26 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-lg  fixed-top">
+  <img src="/api/photos/logo.png?w=55" style="max-width: 55px;">
+  
   <div class="container">
     <a class="navbar-brand" href="/">Confluence</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon">
+        <i class="fa fa-bars"></i>
+      </span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link {{ (page == 'home') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.home.url }}">{{ trad.header.home.title }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/se-reperer">Se repérer</a>
+          <a class="nav-link {{ (page == 'discover') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.discover.url }}">{{ trad.header.discover.title }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/a-propos">A propos</a>
+          <a class="nav-link {{ (page == 'about') ? 'active' : ''}}" href="/{{ lang }}/{{ trad.header.about.url }}">{{ trad.header.about.title }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/decouvrir">Découvrir</a>
+        <li class="nav-item" id="lang">
+          <a class="nav-link" href="/{{ trad.header.lang|lower }}">{{ trad.header.lang}}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">| EN</a>
+        <li class="nav-item" id="accessibility">
+          <a class="nav-link {{ (session.accessibility) ? 'active' : '' }}" href="#" data-toggle="accessibility" title="{{ trad.header.accessibility.title }}"><i class="fa fa-universal-access fa-lg"></i></a>
         </li>
       </ul>
     </div>
